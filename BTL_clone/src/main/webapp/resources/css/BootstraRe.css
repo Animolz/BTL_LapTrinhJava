@@ -1,0 +1,18 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 2, 2022, 9:27:53 PM
+    Author     : Admin
+*/
+
+.form-control {
+    height: 2rem;
+    font-size: 0.6rem;
+    border: 0;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}

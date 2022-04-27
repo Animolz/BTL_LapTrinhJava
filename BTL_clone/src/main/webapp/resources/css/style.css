@@ -1,0 +1,324 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Mar 31, 2022, 10:43:50 PM
+    Author     : Admin
+*/
+
+
+.wrapper{
+    width: 100%;
+}
+
+header {
+    font-family: 'Quicksand', sans-serif;
+    position: relative;
+    width: 100%;
+    background-color: #00dbde;
+}
+
+nav {
+    max-height: 2rem;
+    margin-top: .5rem;
+}
+
+img {
+    width: 100%;
+}
+
+a:hover {
+    text-decoration: none;  
+}
+
+.logo {
+    margin-right: 0.4rem;
+}
+
+.nav-item{
+    margin: 0 1rem;
+}
+
+.nav-link{
+    position: relative;
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.nav-link::before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 4px;
+    background-color: #0074D9;
+    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.search-bar {
+    width: 100%;
+    margin-top: 0.7rem;
+}
+
+.search-content{
+    border-radius: 10px;
+    font-family: 'Montserrat Alternates', sans-serif;
+    border: 3px #333 solid;
+}
+
+.banner {
+    width: 100%;
+}
+
+.wrap-login-signup {
+    width: 35rem;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+    padding: 2rem 2rem 2rem 2rem;
+}
+
+.login-signup-display {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    width: 100%;
+    color: #555;
+}
+
+.txt1 {
+    font-family: 'Montserrat Alternates', sans-serif;
+    color: #3a3b3c;
+    font-size: 1rem;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+}
+
+.login-signup-form {
+    width: 100%;
+    height: 3rem;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    border-bottom: 1px lightgrey solid !important;
+    border: 0;
+    display: block;
+}
+
+.login-signup-form:focus {
+    outline: 0;
+    border: 0;
+}
+
+.button {
+    border: 0;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 500;
+    background-color: transparent;
+    color: #fff;
+}
+
+#submitBtn {
+    height: 3rem;
+    border-radius: 10px;
+    background-color: #333;
+    color: #fff;
+    border: 0;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+    position: relative;
+    z-index: 1;
+}
+
+#submitBtn:hover:before {
+    opacity: 1;
+}
+
+#submitBtn::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    background: #a64bf4;
+    background: -webkit-linear-gradient(45deg,#00dbde,#fc00ff);
+    background: -o-linear-gradient(45deg,#00dbde,#fc00ff);
+    background: -moz-linear-gradient(45deg,#00dbde,#fc00ff);
+    background: linear-gradient(45deg,#00dbde,#fc00ff);
+    opacity: 0;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+}
+
+.wrap-input100 {
+    width: 100%;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+}
+
+.validate-input {
+    position: relative;
+}
+
+.user-data{
+    border: 2px #cccccc solid;
+}
+
+.user-picture{
+    padding-top: 50px;
+    height: 110px;
+    width: 110px;
+    margin-bottom: -5rem;
+    margin: 0 auto;
+    top: 10px;
+    background-color: #00ffff;
+}
+
+.user-username{
+    padding: 4rem 0 1rem 0;
+}
+
+.user-username > span{
+    font-size: 14px
+}
+
+.suggestion{
+    border: 2px #cccccc solid;
+}
+
+.sg-title{
+    border-bottom: 2px #cccccc solid;
+}
+
+.sg-content{
+    
+}
+
+.sg-users > li{
+    list-style-type: none;
+    height: 50px;
+    width: auto;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.sg-users > li > img{
+    border: 2px #333 solid !important;
+}
+
+.sg-users h6{
+   margin-left: 1rem;
+}
+
+.posts{
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.post{
+    padding: 23px 20px;
+    align-items: center;
+}
+
+.post-topbar{
+    border: 1px solid #e4e4e4;
+    border-top: 2px solid #00dbde;
+}
+
+.user-pi {
+    height: 3rem;
+}
+
+.user-posting > ul > li{
+    list-style-type: none;
+    margin-left: 10px;
+}
+
+.user-posting > ul > li > a{
+    color: #b2b2b2;
+    font-size: 16px;
+    display: inline-block;
+    background-color: #e5e5e5;
+    height: 40px;
+    padding: 0 15px;
+    line-height: 40px;
+    font-weight: 500;
+    -webkit-transition: all 0.4s ease-in;
+    -moz-transition: all 0.4s ease-in;
+    -ms-transition: all 0.4s ease-in;
+    -o-transition: all 0.4s ease-in;
+    transition: all 0.4s ease-in;
+}
+
+.user-posting > ul > li > a:hover, .user-posting > ul > li > a.active{
+    background-color: #00dbde;
+    color: #333;
+}
+
+
+.user-pic{
+    height: inherit;
+    width: auto;
+    border: 5px #FFF solid;
+    border-radius: 50%;
+}
+
+.post-head .user-pi span {
+    font-size: 14px;
+    color: #cccccc;
+    
+}
+
+.button-ellips:hover, .button-ellips:focus{
+    outline: none;
+}
+
+#searchBtn {
+    margin-top: 3px;
+    margin-left: -1.9rem;
+    border: 0;
+    border-radius: .25rem;
+    height: 1.5rem;
+}
+
+#user-login {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#submit-container {
+    margin: 0 6rem 1rem 6rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-link:hover::before{
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+}
