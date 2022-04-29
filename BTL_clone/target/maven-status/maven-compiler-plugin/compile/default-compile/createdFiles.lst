@@ -1,0 +1,5 @@
+com\lhn\controller\HomeController.class
+com\lhn\config\DispatchServletInit.class
+com\lhn\config\TilesConfig.class
+com\lhn\config\AppContextConfig.class
+com\lhn\controller\UserController.class
