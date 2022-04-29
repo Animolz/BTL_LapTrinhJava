@@ -8,7 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <header id="header">
         <div class="container pb-2">
-            <div class="row pt-1">
+            <div class="row pt-1 justify-content-between">
                 <div class="logo m-2">
                     <a class="logo-link" href="#">
                         <img src="<c:url value="/resources/media/pics/headerIcon.png" />" alt="alt" class="mt-1"/>
@@ -35,9 +35,6 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Profiles</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Messages</a>
                                 </li>
                                  <li class="nav-item">
                                     <a class="nav-link" href="#">Notifications</a>

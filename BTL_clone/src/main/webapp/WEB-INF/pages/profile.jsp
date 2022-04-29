@@ -1,25 +1,39 @@
 <%-- 
-    Document   : index
-    Created on : Mar 30, 2022, 11:43:39 PM
+    Document   : profile
+    Created on : Apr 29, 2022, 8:36:41 PM
     Author     : Admin
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<section class="cover-sec">
+    <img src="<c:url value="/resources/media/pics/cover-img.jpg"/>" alt="alt"/>
+</section>
+
 <div class="container mt-5">
     <div class="row justify-content-between">
         <div class="col-lg-3 col-md-4 p-0">
-            <div class="user-data text-center">
-                <div class="user-profile">
-                    <div class="user-picture w-100">
+            <div class="profile-pic text-center">
+                <div class="user-profile mb-2">
+                    <div class="user-picture w-100 p-0 bg-transparent pic-resize">
                         <img src="<c:url value="/resources/media/pics/avatar.png" />" alt="" class="user-pic"/>
                     </div>
                 </div>
-                <div class="user-username">
-                    <h3 class="text-dark font-weight-bold">John Doe</h3>
-                    <span>Graphic Designer at Self Employed</span>
-                </div>
+                <ul id="social-link" class="text-left p-0 border">
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100038061072521" class="d-flex">
+                            <i class="fa-2x  fa-brands fa-facebook-square mr-1"></i>
+                            <h6 class="txt1 no-wrap m-0">https://www.facebook.com/profile.php?id=100038061072521</h6>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/l.h.n_animol/" class="d-flex">
+                            <i class="fa-2x fa-brands fa-instagram-square mr-1"></i>
+                            <h6 class="txt1 no-wrap m-0">https://www.instagram.com/l.h.n_animol/</h6>
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div class="suggestion mt-3">
                 <div class="sg-title m-3 d-flex justify-content-between">
@@ -45,85 +59,19 @@
             </div>
         </div>
         <div class="col-lg-6 col-md-8">
-            <div class="main-post-sec">
-                <div class="post-topbar row justify-content-between post">
-                    <div class="user-pi col-md-2">
-                        <img src="<c:url value="/resources/media/pics/avatar.png" />" class="user-pic" />
+            <div class="main-post-sec margin-resize-1">
+                <section class="profile-header posts">
+                    <div class="d-flex align-items-center"><i class="fa-2x fa-solid fa-circle-info text-success mr-2"></i><p class="txt1 m-0 h1 text-success">INFO</p></div>
+                    <div class="posts border border-top-0 pt-3 pb-2 pl-4 pr-4 margin-resize-1">
+                        <div class="row align-items-center mb-2">
+                            <span class="txt1 h4 max-w-fit mr-1 col-auto m-0">John Doe</span>
+                            <span class="txt1 h6 m-0 col-auto text-muted"> has post 10 posts </span>
+                        </div>
+                        <span class="txt1 h6 text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
                     </div>
-                    <div class="col-md-8 user-posting">
-                        <ul class="d-flex justify-content-between p-0 m-0">
-                            <li>
-                                <button class="border-0" type="button" data-toggle="modal" data-target="#post-story">Post your Story</button>
-                                <div class="modal hide fade" id="post-story" tabindex="-1" role="dialog" aria-labelledby="post-story" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="post-story">Post Your Story</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="wrap-input100 validate-input">
-                                                    <textarea class="post-font h-100" placeholder="Share your experience" rows="3"></textarea>
-                                                </div>
-                                                <div class="wrap-input100 validate-input mt-2">
-                                                    <input class="post-font" type="file" accept="image/gif, image/jpeg, image/png" name="story-pic" id="story-pic"/>
-                                                </div>
-                                                <div class="wrap-input100 validate-input mt-2">
-                                                    <img id="output2" width="100%" height="auto">
-                                                </div>
-                                            </form>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <button type="submit" class="btn btn-primary" data-dismiss="modal">Post</button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <button class="ac border-0" type="button" data-toggle="modal" data-target="#post-auction">Hold an Auction</button>
-                                <div class="modal hide fade" id="post-auction" tabindex="-1" role="dialog" aria-labelledby="post-auction" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="post-auction">Open An Auction</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="wrap-input100 validate-input">
-                                                    <textarea class="post-font h-100" placeholder="About your item" rows="3"></textarea>
-                                                </div>
-                                                <div class="wrap-input100 validate-input mt-2">
-                                                    <input class="post-font" type="number" min="0" id="price" name="price" placeholder="Enter min item price" step="1000"/>
-                                                </div>
-                                                <h6 class="post-font border-0 mt-3 mb-0">Your item image</h6>
-                                                <div class="wrap-input100 validate-input">
-                                                    <input class="post-font" type="file" accept="image/gif, image/jpeg, image/png, image/jpg" name="item-pic" id="item-pic"/>
-                                                </div>
-                                                <div class="wrap-input100 validate-input">
-                                                    <img id="output1" width="100%" height="auto">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <button type="submit" class="btn btn-primary" data-dismiss="modal">Post</button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                </section>
                 <section class="posts">
-                    <div class="posts mt-5">
+                    <div class="posts mt-3">
                         <div class="post border pb-0">
                             <div class="post-head border-bottom">
                                 <div class="row justify-content-between">
@@ -177,7 +125,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="posts mt-5">
+                    <div class="posts mt-3">
                         <div class="post border pb-0">
                             <div class="post-head border-bottom">
                                 <div class="row justify-content-between">
@@ -264,6 +212,35 @@
                 </section>
             </div>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-2 col-lg-2">
+            <div class="widget border border-top-0 posts mt-3 p-2">
+                <div class="widget-header d-flex align-items-center b-2 border-bottom">
+                    <h3 class="txt1 m-0">Media</h3>
+                    <i class="fa-regular fa-image text-muted"></i>
+                </div>
+                <div class="widget-gallery mt-2">
+                    <ul class="p-0 d-flex flex-wrap justify-content-between">
+                        <li>
+                            <img src="https://res.cloudinary.com/dyhp6kio1/image/upload/v1651245612/Java/wp5609581_u3xpe2.jpg" alt="alt"/>
+                        </li>
+                        <li>
+                            <img src="https://res.cloudinary.com/dyhp6kio1/image/upload/v1651245593/Java/download_qimbd9.jpg" alt="alt"/>
+                        </li>
+                        <li>
+                            <img src="https://res.cloudinary.com/dyhp6kio1/image/upload/v1651245588/Java/download_a1rlhw.jpg" alt="alt"/>
+                        </li>
+                        <li>
+                            <img src="https://res.cloudinary.com/dyhp6kio1/image/upload/v1651245584/Java/download_lkwf3e.jpg" alt="alt"/>
+                        </li>
+                        <li>
+                            <img src="https://res.cloudinary.com/dyhp6kio1/image/upload/v1651245612/Java/wp5609581_u3xpe2.jpg" alt="alt"/>
+                        </li>
+                        <li>
+                            <img src="https://res.cloudinary.com/dyhp6kio1/image/upload/v1651245593/Java/download_qimbd9.jpg" alt="alt"/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

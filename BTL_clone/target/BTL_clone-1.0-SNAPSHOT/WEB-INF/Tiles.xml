@@ -12,7 +12,11 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="resources" value="/WEB-INF/layout/resources.jsp" />
     </definition>
     <definition name="index" extends="baseLayout">
-        <put-attribute name="title" value="Trang chu" />
+        <put-attribute name="title" value="Home" />
         <put-attribute name="content" value="/WEB-INF/pages/index.jsp" />
+    </definition>
+    <definition name="profile" extends="baseLayout">
+        <put-attribute name="title" value="Profile" />
+        <put-attribute name="content" value="/WEB-INF/pages/profile.jsp" />
     </definition>
 </tiles-definitions>

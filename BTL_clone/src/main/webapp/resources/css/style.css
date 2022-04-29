@@ -48,17 +48,6 @@ a:hover {
     padding-bottom: 10px;
 }
 
-.nav-link::before{
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 0;
-    height: 4px;
-    background-color: #0074D9;
-    transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
 .search-bar {
     width: 100%;
     margin-top: 0.7rem;
@@ -75,11 +64,11 @@ a:hover {
 }
 
 .wrap-login-signup {
-    width: 35rem;
+    width: 35rem !important;
     background-color: #fff;
     border-radius: 10px;
     position: relative;
-    padding: 2rem 2rem 2rem 2rem;
+    padding: 2rem 2rem;
 }
 
 .login-signup-display {
@@ -113,6 +102,22 @@ a:hover {
     display: block;
 }
 
+.post-font{
+    width: 100%;
+    height: 3rem;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 1rem;
+    font-weight: 200;
+    border-bottom: 1px lightgrey solid !important;
+    border: 0;
+    display: block;
+}
+
+.post-font:focus{
+    outline: 0;
+    border: 0;
+}
+
 .login-signup-form:focus {
     outline: 0;
     border: 0;
@@ -124,46 +129,6 @@ a:hover {
     font-weight: 500;
     background-color: transparent;
     color: #fff;
-}
-
-#submitBtn {
-    height: 3rem;
-    border-radius: 10px;
-    background-color: #333;
-    color: #fff;
-    border: 0;
-    -webkit-transition: all .4s;
-    -o-transition: all .4s;
-    -moz-transition: all .4s;
-    transition: all .4s;
-    position: relative;
-    z-index: 1;
-}
-
-#submitBtn:hover:before {
-    opacity: 1;
-}
-
-#submitBtn::before {
-    content: "";
-    display: block;
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    top: 0;
-    left: 0;
-    background: #a64bf4;
-    background: -webkit-linear-gradient(45deg,#00dbde,#fc00ff);
-    background: -o-linear-gradient(45deg,#00dbde,#fc00ff);
-    background: -moz-linear-gradient(45deg,#00dbde,#fc00ff);
-    background: linear-gradient(45deg,#00dbde,#fc00ff);
-    opacity: 0;
-    -webkit-transition: all .4s;
-    -o-transition: all .4s;
-    -moz-transition: all .4s;
-    transition: all .4s;
 }
 
 .wrap-input100 {
@@ -251,7 +216,7 @@ a:hover {
     margin-left: 10px;
 }
 
-.user-posting > ul > li > a{
+.user-posting > ul > li > button{
     color: #b2b2b2;
     font-size: 16px;
     display: inline-block;
@@ -260,16 +225,12 @@ a:hover {
     padding: 0 15px;
     line-height: 40px;
     font-weight: 500;
-    -webkit-transition: all 0.4s ease-in;
-    -moz-transition: all 0.4s ease-in;
-    -ms-transition: all 0.4s ease-in;
-    -o-transition: all 0.4s ease-in;
-    transition: all 0.4s ease-in;
 }
 
-.user-posting > ul > li > a:hover, .user-posting > ul > li > a.active{
+.user-posting > ul > li > button:hover, .user-posting > ul > li > button.ac{
     background-color: #00dbde;
     color: #333;
+    text-decoration: none;
 }
 
 
@@ -286,8 +247,108 @@ a:hover {
     
 }
 
-.button-ellips:hover, .button-ellips:focus{
+.button-ellips:hover{
     outline: none;
+    background: #b2b2b2;
+}
+
+.post-content > h6{
+    font-size: 18px;
+}
+
+.post-pic{
+    max-width: 100%;
+    height: auto;
+    padding-right: -20px;
+}
+
+.post-footer-button{
+    width: 2rem;
+}
+
+.form-control {
+    height: 2rem;
+    font-size: 0.6rem;
+    border: 0;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+button.active{
+    background-color: #6c757d !important;
+    color: #fff;
+}
+
+button.active > i, button.active > input, button.active > span{
+    color: #fff;
+}
+
+.pic-resize{
+    height: 250px;
+    margin-top: -7rem;  
+}
+
+.no-wrap{
+    white-space: nowrap;
+    overflow: hidden;
+    max-height: 100px;
+    height: auto;
+}
+
+.max-w-fit{
+    max-width: fit-content;
+}
+
+.profile-header > div:nth-child(1){
+    margin-left: -1.7rem;
+}
+
+.widget-gallery ul li{
+    list-style-type: none;
+    width: 60px;
+    height: auto;
+    margin: 0.5rem;
+}
+
+.widget-gallery ul li img{
+    width: inherit;
+    height: inherit;
+    border-radius: 10px;
+}
+
+.widget-gallery ul li img:hover{
+    width: 65px;
+}
+
+.crop {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.crop img {
+    width: 200px;
+    height: 200px;
+}
+
+#social-link li{
+    list-style-type: none;
+    margin: 1rem 0;
+    padding: 0 1rem;
+}
+
+#social-link li a{
+    overflow: hidden;
+    max-height: 500px;
+    height: auto;
+    align-items: center;
+    align-content: center;
+}
+
+#post-auction .modal-body div:nth-child(4){
+    margin-top: -1.5rem;
 }
 
 #searchBtn {
@@ -311,14 +372,58 @@ a:hover {
     background-size: cover;
 }
 
+.profile-pic{
+    
+}
+
+.margin-resize-1{
+    margin-top: -1rem;  
+}
+
 #submit-container {
     margin: 0 6rem 1rem 6rem;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .nav-link:hover::before{
-    left: 0;
-    right: auto;
+#submitBtn:hover:before {
+    opacity: 1;
+}
+
+#submitBtn::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
     width: 100%;
-  }
+    height: 100%;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    background: #a64bf4;
+    background: -webkit-linear-gradient(45deg,#00dbde,#fc00ff);
+    background: -o-linear-gradient(45deg,#00dbde,#fc00ff);
+    background: -moz-linear-gradient(45deg,#00dbde,#fc00ff);
+    background: linear-gradient(45deg,#00dbde,#fc00ff);
+    opacity: 0;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+}
+
+#submitBtn {
+    height: 3rem;
+    border-radius: 10px;
+    background-color: #333;
+    color: #fff;
+    border: 0;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+    position: relative;
+    z-index: 1;
+}
+
+button.general:hover{
+    background-color: #b2b2b2;
 }

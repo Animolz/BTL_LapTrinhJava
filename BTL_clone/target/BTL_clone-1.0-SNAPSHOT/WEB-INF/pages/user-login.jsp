@@ -29,7 +29,7 @@
         <section id="user-login" style="background-image: url('<c:url value="/resources/media/pics/login_background.png" />')">
             <div class="container wrap-login-signup">
                 <form>
-                    <span class="login-signup-display">Đăng Nhập</span>
+                    <span class="login-signup-display">Login</span>
                     <div class="mt-5 mb-2">
                         <span class="txt1">Username</span>
                     </div>
@@ -40,14 +40,14 @@
                         <span class="txt1">Password</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="login-signup-form" type="text" name="password" required="Password is required"/>
+                        <input class="login-signup-form" type="password" name="password" required="Password is required"/>
                     </div>
                     <div id="submit-container" class="mt-5">
                     <button  class="w-100" id="submitBtn"><input type="button" name="login-submit" value="Login" class="button"/></button>
                 </div>
                 </form>
                 <div class="txt1 w-100 login-signup-display mt-5 text-capitalize">
-                    <p>Bạn không có tài khoản ? <a href="#">Sign-up</a></p>
+                    <p>Don't have an account? <a href="#">Sign up</a></p>
                 </div>
             </div>
         </section>

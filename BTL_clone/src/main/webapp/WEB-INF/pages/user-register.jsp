@@ -11,51 +11,97 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Đăng ký</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>Carity</title>
         <link rel="stylesheet" href="<c:url value="/resources/css/style.css" />"/>
-        <link rel="stylesheet" href="<c:url value="/resources/css/BootstrapRe.css" />"/>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="<c:url value="/resources/js/main.js"/>" ></script>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js"></script>
-        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
         <section id="user-login" style="background-image: url('<c:url value="/resources/media/pics/signup_background.png" />')">
-            <div class="container wrap-login-signup">
+            <div class="container wrap-login-signup pl-5 pr-5">
                 <form>
-                    <span class="login-signup-display">Đăng Ký</span>
+                    <span class="login-signup-display">Sign up</span>
                     <div class="mt-4 mb-2">
                         <span class="txt1">Email</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Email is required">
-                        <input class="login-signup-form" type="text" name="email" />
+                        <input class="login-signup-form" type="text" name="email" required="Email is required" />
                     </div>
-                    <div class="mt-5 mb-2">
+                    <div class="mt-4 mb-2">
                         <span class="txt1">Username</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Username is required">
-                        <input class="login-signup-form" type="text" name="username" />
+                        <input class="login-signup-form" type="text" name="username" required="Username is required" />
                     </div>
                     <div class="mt-4 mb-2">
                         <span class="txt1">Password</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="login-signup-form" type="text" name="password" />
+                        <input class="login-signup-form" type="password" name="password" required="Password is required" />
                     </div>
                     <div class="mt-4 mb-2">
                         <span class="txt1">Confirm Password</span>
                     </div>
                     <div class="wrap-input100 validate-input">
-                        <input class="login-signup-form" type="text" name="confirm-password" />
+                        <input class="login-signup-form" type="password" name="confirm-password" required="Confirm password is required" />
                     </div>
                     <div id="submit-container" class="mt-5">
-                        <button  class="w-100" id="submitBtn"><input type="button" name="login-submit" value="Login" class="button"/></button>
+                        <button type="button" class="w-100" id="submitBtn" data-toggle="modal" data-target="#register-modal">
+                            <input type="button" name="register-submit" value="Register" class="button"/>
+                        </button>
+                    </div>
+                    <!-- Modal -->
+                    <div class="modal hide fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="fillUserInfo" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="fillUserInfo">Tell us about yourself</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="mt-3 mb-1">
+                                <span class="txt1">Full name</span>
+                            </div>
+                            <div class="wrap-input100 validate-input" data-validate="Fullname is required">
+                                <input class="post-font" type="text" name="fullname" required="Fullname is required"/>
+                            </div>
+                            <div class="mt-3 mb-1">
+                                <span class="txt1">Phone</span>
+                            </div>
+                            <div class="wrap-input100 validate-input" data-validate="Phone is required">
+                                <input class="post-font" type="text" name="phone" required="Phone is required"/>
+                            </div>
+                            <div class="mt-3 mb-1">
+                                <span class="txt1">Avatar</span>
+                            </div>
+                            <div class="wrap-input100 validate-input" data-validate="Avatar is required">
+                                <input class="post-font" type="file" name="avatar" required="Avatar is required"/>
+                            </div>
+                            <div class="wrap-input100 validate-input mt-2 crop">
+                                <img id="output2" width="100%" height="auto" class="rounded-circle"/>
+                            </div>
+                            <div class="mt-3 mb-1">
+                                <span class="txt1">About(Optional)</span>
+                            </div>
+                            <div class="wrap-input100 validate-input mt-2">
+                                <textarea class="post-font h-100" placeholder="Tell us something about yourself" rows="3"></textarea>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                 </form>
             </div>

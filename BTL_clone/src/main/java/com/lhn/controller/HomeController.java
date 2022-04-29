@@ -28,4 +28,9 @@ public class HomeController {
     public String admin(Model model){
         return "admin";
     }
+    
+    @RequestMapping("/profile")
+    public String profile(Model model){
+        return "profile";
+    }
 }
