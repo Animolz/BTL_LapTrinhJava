@@ -8,7 +8,4 @@
     ">
 <context:annotation-config />
 
-<mvc:annotation-driven />
-  <mvc:resources mapping="/resources/**" location="/resources/"
-    cache-period="31556926" />
 </beans>

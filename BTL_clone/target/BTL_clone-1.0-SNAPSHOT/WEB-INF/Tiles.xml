@@ -9,14 +9,25 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
         <put-attribute name="header" value="/WEB-INF/layout/header.jsp" />
         <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
         <put-attribute name="content" value="" />
-        <put-attribute name="resources" value="/WEB-INF/layout/resources.jsp" />
     </definition>
     <definition name="index" extends="baseLayout">
         <put-attribute name="title" value="Home" />
-        <put-attribute name="content" value="/WEB-INF/pages/index.jsp" />
+        <put-attribute name="content" value="/WEB-INF/pages/user/index.jsp" />
     </definition>
     <definition name="profile" extends="baseLayout">
         <put-attribute name="title" value="Profile" />
-        <put-attribute name="content" value="/WEB-INF/pages/profile.jsp" />
+        <put-attribute name="content" value="/WEB-INF/pages/user/profile.jsp" />
+    </definition>
+    <definition name="admin-user" extends="baseLayout">
+        <put-attribute name="title" value="Admin" />
+        <put-attribute name="content" value="/WEB-INF/pages/admin/admin-user.jsp" />
+    </definition>
+    <definition name="admin-user-input" extends="baseLayout">
+        <put-attribute name="title" value="Admin" />
+        <put-attribute name="content" value="/WEB-INF/pages/admin/admin-user-input.jsp" />
+    </definition>
+    <definition name="admin-user-input1" extends="baseLayout">
+        <put-attribute name="title" value="Admin" />
+        <put-attribute name="content" value="/WEB-INF/pages/admin/admin-user-input1.jsp" />
     </definition>
 </tiles-definitions>

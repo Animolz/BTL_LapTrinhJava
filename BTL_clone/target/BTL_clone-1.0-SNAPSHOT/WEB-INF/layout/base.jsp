@@ -14,9 +14,10 @@
         <title>
             <tiles:insertAttribute name="title" />
         </title>
-        <link rel="stylesheet" href="<c:url value="/resources/css/style.css" />"/>
+        <link rel="stylesheet" href="<c:url value="/css/style.css" />"/>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script src="<c:url value="/resources/js/main.js"/>" ></script>
+        <script src="<c:url value="/js/main.js" />" ></script>
+        <script src="<c:url value="/js/ajax.js" />" ></script>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />

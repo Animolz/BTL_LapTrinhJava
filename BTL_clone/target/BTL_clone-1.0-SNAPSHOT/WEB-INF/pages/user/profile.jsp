@@ -8,7 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <section class="cover-sec">
-    <img src="<c:url value="/resources/media/pics/cover-img.jpg"/>" alt="alt"/>
+    <img src="<c:url value="/pics/cover-img.jpg"/>" alt="alt"/>
 </section>
 
 <div class="container mt-5">
@@ -17,7 +17,7 @@
             <div class="profile-pic text-center">
                 <div class="user-profile mb-2">
                     <div class="user-picture w-100 p-0 bg-transparent pic-resize">
-                        <img src="<c:url value="/resources/media/pics/avatar.png" />" alt="" class="user-pic"/>
+                        <img src="<c:url value="/pics/avatar.png" />" alt="" class="user-pic"/>
                     </div>
                 </div>
                 <ul id="social-link" class="text-left p-0 border">
@@ -43,15 +43,15 @@
                 <div class="sg-content">
                     <ul class='sg-users p-0 ml-4 mr-5'>
                         <li>
-                            <img src="<c:url value="/resources/media/pics/avatar.png" />" class="user-pic" />
+                            <img src="<c:url value="/pics/avatar.png" />" class="user-pic" />
                             <h6>Temp</h6>
                         </li>
                         <li>
-                            <img src="<c:url value="/resources/media/pics/avatar.png" />" class="user-pic" />
+                            <img src="<c:url value="/pics/avatar.png" />" class="user-pic" />
                             <h6>Temp</h6>
                         </li>
                         <li>
-                            <img src="<c:url value="/resources/media/pics/avatar.png" />" class="user-pic" />
+                            <img src="<c:url value="/pics/avatar.png" />" class="user-pic" />
                             <h6>Temp</h6>
                         </li>
                     </ul>
@@ -76,7 +76,7 @@
                             <div class="post-head border-bottom">
                                 <div class="row justify-content-between">
                                     <div class="col-md-10 user-pi d-flex">
-                                        <img src="<c:url value="/resources/media/pics/avatar.png" />" class="user-pic" />
+                                        <img src="<c:url value="/pics/avatar.png" />" class="user-pic" />
                                         <div class="ml-2">
                                             <h6 class="m-0">John Doe</h6>
                                             <span><i class="fa-regular fa-clock"></i></span>
@@ -93,7 +93,7 @@
                                     <h6 class="pr-3 pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h6>
                                 </div>
                                 <div class="post-pic">
-                                    <img src="<c:url value="/resources/media/pics/crowd.png" />" class="border mt-1">
+                                    <img src="<c:url value="/pics/crowd.png" />" class="border mt-1">
                                 </div>
                             </div>
                             <div class="post-footer mt-1 mb-1 d-flex justify-content-between position-relative">
@@ -109,14 +109,14 @@
                             </div>
                             <div id="comment-section" class="collapse">
                                 <div class="media border p-2">
-                                    <img src="<c:url value="/resources/media/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                                    <img src="<c:url value="/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
                                     <div class="media-body">
                                         <h6>John Doe <small><i class="fa-regular fa-clock"></i> 3 min ago</small></h6>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                     </div>
                                 </div>
                                 <div class="media border p-2">
-                                    <img src="<c:url value="/resources/media/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                                    <img src="<c:url value="/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
                                     <div class="media-body">
                                         <h6>John Doe <small><i class="fa-regular fa-clock"></i> 3 min ago</small></h6>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -130,7 +130,7 @@
                             <div class="post-head border-bottom">
                                 <div class="row justify-content-between">
                                     <div class="col-md-10 user-pi d-flex">
-                                        <img src="<c:url value="/resources/media/pics/avatar.png" />" class="user-pic" />
+                                        <img src="<c:url value="/pics/avatar.png" />" class="user-pic" />
                                         <div class="ml-2">
                                             <h6 class="m-0">John Doe</h6>
                                             <span><i class="fa-regular fa-clock"></i></span>
@@ -177,7 +177,7 @@
                                     </div>
                                 </div>
                                 <div class="post-pic">
-                                    <img src="<c:url value="/resources/media/pics/shoes.png" />" class="border mt-1">
+                                    <img src="<c:url value="/pics/shoes.png" />" class="border mt-1">
                                 </div>
                             </div>
                             <div class="post-footer mt-1 mb-1 d-flex justify-content-between position-relative">
@@ -193,14 +193,14 @@
                             </div>
                             <div id="comment-section1" class="collapse">
                                 <div class="media border p-2">
-                                    <img src="<c:url value="/resources/media/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                                    <img src="<c:url value="/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
                                     <div class="media-body">
                                         <h6>John Doe <small><i class="fa-regular fa-clock"></i> 3 min ago</small></h6>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                     </div>
                                 </div>
                                 <div class="media border p-2">
-                                    <img src="<c:url value="/resources/media/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                                    <img src="<c:url value="/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
                                     <div class="media-body">
                                         <h6>John Doe <small><i class="fa-regular fa-clock"></i> 3 min ago</small></h6>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
