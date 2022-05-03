@@ -6,7 +6,9 @@ package com.lhn.controller;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.lhn.pojo.Tag;
 import com.lhn.pojo.User;
+import com.lhn.service.TagService;
 import com.lhn.service.UserService;
 import java.io.IOException;
 import java.util.HashMap;
@@ -29,14 +31,14 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author Admin
  */
 @Controller
-public class AdminController {
+public class AdminUserController {
     @Autowired
     private UserService userService;
     @Autowired
     private Cloudinary cloudinary;
         
     @GetMapping(path = {"/admin-user"})
-    public String admin(Model model, 
+    public String adminUser(Model model, 
             @RequestParam(value = "kw", required = false) String kw){
         if(kw != null && !kw.isEmpty()){
             Map<String, String> param = new HashMap<>();
@@ -71,20 +73,9 @@ public class AdminController {
     @PostMapping(path = {"/admin-user/input/add"})
     public String addUser(Model model,
             @ModelAttribute(value = "user") User user){
-        try{
-            Map r = cloudinary.uploader().upload(user.getFile().getBytes(), ObjectUtils.asMap("resource_type", "auto"));
-            String img = (String)r.get("secure_url");
-            user.setAvatar(img);
-            user.setActive(true);
-            if(this.userService.addUser(user))
-                return "redirect:/admin-user";
-            else{
-                model.addAttribute("error", "There's an error when we tried to record your info!!!");
-                return "forward:/admin-user/input";
-            }  
-        }
-        catch(IOException ex){
-            ex.printStackTrace();
+        if(this.userService.addUser(user))
+            return "redirect:/admin-user";
+        else{
             model.addAttribute("error", "There's an error when we tried to record your info!!!");
             return "forward:/admin-user/input";
         }
@@ -112,5 +103,31 @@ public class AdminController {
             model.addAttribute("user", user);
         }
         return "admin-user-input1";
+    }
+    
+    @GetMapping(path = "/admin-user/ban/{userId}")
+    public String banUser(Model model,
+            @PathVariable(value = "userId") String userId){
+        if(userId != null && !userId.isEmpty()){
+            Map<String, String> param = new HashMap<>();
+            param.put("id", userId);
+            User user = this.userService.getUsers(param).get(0);
+            if(user.getIsBanned() == false){
+                if(this.userService.banUser(user))
+                    return "redirect:/admin-user";
+                else{
+                model.addAttribute("error", "There's an error when we tried to ban a user!!!");
+                return "forward:/admin-user";
+                }
+            }else {
+                 if(this.userService.unbanUser(user))
+                    return "redirect:/admin-user";
+                else{
+                model.addAttribute("error", "There's an error when we tried to ban a user!!!");
+                return "forward:/admin-user";
+                 }
+            }
+        }
+        return null;
     }
 }

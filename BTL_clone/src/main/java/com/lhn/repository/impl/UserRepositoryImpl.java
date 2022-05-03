@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Predicate;
@@ -99,29 +100,51 @@ public class UserRepositoryImpl implements UserRepository{
     }
 
     @Override
-    public boolean deleteUser(User user) {
+    public boolean deleteUser(int id) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        try{
-            session.delete(user);
-            return true;
-        }
-        catch(HibernateException ex){
-            ex.printStackTrace();
-            return false;
-        }
+        CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaDelete<User> u = b.createCriteriaDelete(User.class);
+        Root root = u.from(User.class);
+        u.where(b.equal(root.get("id").as(Integer.class), id));
+        
+        return session.createQuery(u).executeUpdate()> 0;
     }
 
     @Override
     public boolean updateActive(User user) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
-        try{
-            user.setActive(false);
-            session.update(user);
-            return true;
-        }
-        catch(HibernateException ex){
-            ex.printStackTrace();
-            return false;
-        }
+        CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaUpdate u = b.createCriteriaUpdate(User.class);
+        Root root = u.from(User.class);
+        u.set("active", false);
+        u.where(b.equal(root.get("id").as(Integer.class), user.getId()));
+        
+        return session.createQuery(u).executeUpdate() > 0;
+    }
+
+    @Override
+    public boolean banUser(User user) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaUpdate u = b.createCriteriaUpdate(User.class);
+        Root root = u.from(User.class);
+        u.set("isBanned", true);
+        u.set("active", false);
+        u.where(b.equal(root.get("id").as(Integer.class), user.getId()));
+        
+        return session.createQuery(u).executeUpdate() > 0;
+    }
+    
+    @Override
+    public boolean unbanUser(User user) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaUpdate u = b.createCriteriaUpdate(User.class);
+        Root root = u.from(User.class);
+        u.set("isBanned", false);
+        u.set("active", true);
+        u.where(b.equal(root.get("id").as(Integer.class), user.getId()));
+        
+        return session.createQuery(u).executeUpdate() > 0;
     }
 }

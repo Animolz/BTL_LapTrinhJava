@@ -5,6 +5,7 @@
 package com.lhn.controller;
 
 import com.lhn.pojo.User;
+import com.lhn.service.PostService;
 import com.lhn.service.UserService;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,11 +27,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HomeController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private PostService postService;
     
     @RequestMapping(path = {"/"})
     public String login(Model model){
+        return "user-login";
+    }
+    
+    @GetMapping(path = {"/home"})
+    public String home(Model model){
         model.addAttribute("user", this.userService.getUsers(null).get(0));
+        model.addAttribute("posts",this.postService.getPosts(null));
         return "index";
     }
-
+    
+    @GetMapping(path = {"/home?page={page}"})
+    public String homepage(Model model,
+            @RequestParam(value = "page") int page){
+        
+    }
+    
 }

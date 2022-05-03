@@ -37,13 +37,23 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean deleteUser(User user) {
-        return this.userRepository.deleteUser(user);
+    public boolean deleteUser(int id) {
+        return this.userRepository.deleteUser(id);
     }
 
     @Override
     public boolean updateActive(User user) {
         return this.userRepository.updateActive(user);
+    }
+
+    @Override
+    public boolean banUser(User user) {
+       return this.userRepository.banUser(user);
+    }
+
+    @Override
+    public boolean unbanUser(User user) {
+        return this.userRepository.unbanUser(user);
     }
    
     

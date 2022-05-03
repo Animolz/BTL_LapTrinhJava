@@ -20,14 +20,30 @@ Software Foundation//DTD Tiles Configuration 3.0//EN"
     </definition>
     <definition name="admin-user" extends="baseLayout">
         <put-attribute name="title" value="Admin" />
-        <put-attribute name="content" value="/WEB-INF/pages/admin/admin-user.jsp" />
+        <put-attribute name="content" value="/WEB-INF/pages/admin/user/admin-user.jsp" />
     </definition>
     <definition name="admin-user-input" extends="baseLayout">
         <put-attribute name="title" value="Admin" />
-        <put-attribute name="content" value="/WEB-INF/pages/admin/admin-user-input.jsp" />
+        <put-attribute name="content" value="/WEB-INF/pages/admin/user/admin-user-input.jsp" />
     </definition>
     <definition name="admin-user-input1" extends="baseLayout">
         <put-attribute name="title" value="Admin" />
-        <put-attribute name="content" value="/WEB-INF/pages/admin/admin-user-input1.jsp" />
+        <put-attribute name="content" value="/WEB-INF/pages/admin/user/admin-user-input1.jsp" />
+    </definition>
+    <definition name="admin-tag" extends="baseLayout">
+        <put-attribute name="title" value="Admin" />
+        <put-attribute name="content" value="/WEB-INF/pages/admin/tag/admin-tag.jsp" />
+    </definition>
+    <definition name="admin-tag-input" extends="baseLayout">
+        <put-attribute name="title" value="Admin" />
+        <put-attribute name="content" value="/WEB-INF/pages/admin/tag/admin-tag-input.jsp" />
+    </definition>
+    <definition name="admin-tag-input1" extends="baseLayout">
+        <put-attribute name="title" value="Admin" />
+        <put-attribute name="content" value="/WEB-INF/pages/admin/tag/admin-tag-input1.jsp" />
+    </definition>
+    <definition name="admin-post" extends="baseLayout">
+        <put-attribute name="title" value="Admin" />
+        <put-attribute name="content" value="/WEB-INF/pages/admin/post/admin-post.jsp" />
     </definition>
 </tiles-definitions>

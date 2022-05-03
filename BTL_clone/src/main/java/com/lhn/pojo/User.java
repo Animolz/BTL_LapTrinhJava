@@ -86,7 +86,7 @@ public class User implements Serializable {
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "avatar")
-    private String avatar;
+    private String avatar = "https://res.cloudinary.com/dyhp6kio1/image/upload/v1651247273/images_sliwp9.png";
     @Size(max = 255)
     @Column(name = "about")
     private String about;
@@ -94,7 +94,7 @@ public class User implements Serializable {
     @NotNull
     @Column(name = "created_time")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createdTime = new Date();
+    private Date createdTime;
     @Basic(optional = false)
     @NotNull
     @Column(name = "is_reported")
@@ -111,7 +111,7 @@ public class User implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "active")
-    private boolean active;
+    private boolean active = true;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private Set<Post> postSet;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
