@@ -11,10 +11,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Đăng nhập</title>
+        <title>Carity</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="<c:url value="/resources/css/style.css" />"/>
-        <link rel="stylesheet" href="<c:url value="/resources/css/BootstrapRe.css" />"/>
+        <link rel="stylesheet" href="<c:url value="/css/style.css" />"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
@@ -26,7 +25,7 @@
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <section id="user-login" style="background-image: url('<c:url value="/resources/media/pics/login_background.png" />')">
+        <section id="user-login" style="background-image: url('<c:url value="/pics/login_background.png" />')">
             <div class="container wrap-login-signup">
                 <form>
                     <span class="login-signup-display">Login</span>

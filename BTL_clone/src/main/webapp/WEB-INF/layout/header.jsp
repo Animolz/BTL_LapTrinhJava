@@ -17,7 +17,7 @@
                 <div class="search-bar col-md-3">
                     <form  action="" class="d-flex">
                         <input type="text" name="search" placeholder="Search...." class="search-content" />
-                        <button type="submit" name="searchBtn" id="searchBtn">
+                        <button type="submit" id="searchBtn">
                             <i class="fas fa-search" ></i>
                         </button>
                     </form>
