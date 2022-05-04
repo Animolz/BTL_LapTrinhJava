@@ -25,7 +25,7 @@
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <c:url value="/login" var="action" />
+        <c:url value="/" var="action" />
         <section id="user-login" style="background-image: url('<c:url value="/pics/login_background.png" />')">
             <div class="container wrap-login-signup">
                 <form action="${action}" method="POST" >

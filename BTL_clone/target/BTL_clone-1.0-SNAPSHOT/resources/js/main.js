@@ -69,5 +69,5 @@ $(document).ready(function (){
        // các button mà chúng ta click vào sẽ được add class active
     }
     
-    $('#table-users').DataTable();
+
 });

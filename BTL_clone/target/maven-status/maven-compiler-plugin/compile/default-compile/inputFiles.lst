@@ -8,6 +8,7 @@ C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\controll
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\repository\UserRepository.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\formatter\UserFormatter.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\config\HibernateConfig.java
+C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\validator\UserValidator.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\repository\impl\PostRepositoryImpl.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\pojo\Post.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\service\impl\PostServiceImpl.java
@@ -16,13 +17,11 @@ C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\controll
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\pojo\Like1.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\pojo\Tag.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\controller\HomeController.java
-C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\config\SpringSecurityConfig.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\pojo\User.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\service\impl\TagServiceImpl.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\repository\impl\TagRepositoryImpl.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\repository\TagRepository.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\controller\AdminUserController.java
-C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\config\SecurityWebAppInit.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\repository\PostRepository.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\repository\impl\UserRepositoryImpl.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\config\DispatchServletInit.java

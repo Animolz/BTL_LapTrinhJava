@@ -7,8 +7,8 @@ com\lhn\pojo\User.class
 com\lhn\pojo\Tag.class
 com\lhn\service\UserService.class
 com\lhn\repository\TagRepository.class
-com\lhn\config\SpringSecurityConfig.class
 com\lhn\controller\UserController.class
+com\lhn\validator\UserValidator.class
 com\lhn\service\impl\PostServiceImpl.class
 com\lhn\repository\impl\TagRepositoryImpl.class
 com\lhn\repository\impl\PostRepositoryImpl.class
@@ -16,7 +16,6 @@ com\lhn\service\impl\UserServiceImpl.class
 com\lhn\controller\AdminUserController.class
 com\lhn\repository\PostRepository.class
 com\lhn\config\AppContextConfig.class
-com\lhn\config\SecurityWebAppInit.class
 com\lhn\pojo\Comment.class
 com\lhn\pojo\Like1.class
 com\lhn\config\HibernateConfig.class

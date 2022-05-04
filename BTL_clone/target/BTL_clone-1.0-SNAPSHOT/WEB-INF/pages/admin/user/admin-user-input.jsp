@@ -14,36 +14,42 @@
     <c:url var="action" value="/admin-user/input/add"/>
     <form:form method="POST" action="${action}" modelAttribute="user" 
                enctype="multipart/form-data">
+        <form:errors path="*" element="div" cssClass="alert alert-danger" />
         <span class="login-signup-display my-2">Add User</span>
         <div class="mt-4 mb-2">
             <span class="txt1">Username</span>
         </div>
         <div class="wrap-input100 validate-input">
-            <form:input cssClass="login-signup-form" path="username"/>
+            <form:input type="text" cssClass="login-signup-form" path="username"/>
+            <form:errors cssClass="login-signup-form text-danger" path="username" />
         </div>
         <div class="mt-4 mb-2">
             <span class="txt1">Password</span>
         </div>
         <div class="wrap-input100 validate-input">
             <form:input type="password" cssClass="login-signup-form" path="password"/>
+            <form:errors cssClass="login-signup-form text-danger" path="password" />
         </div>
         <div class="mt-4 mb-2">
             <span class="txt1">Email</span>
         </div>
         <div class="wrap-input100 validate-input">
             <form:input type="email" cssClass="login-signup-form" path="email"/>
+            <form:errors cssClass="login-signup-form text-danger" path="email" />
         </div>
         <div class="mt-4 mb-2">
             <span class="txt1">Full name</span>
         </div>
         <div class="wrap-input100 validate-input">
             <form:input cssClass="login-signup-form" path="fullname"/>
+            <form:errors cssClass="login-signup-form text-danger" path="fullname" />
         </div>
         <div class="mt-4 mb-2">
             <span class="txt1">Phone</span>
         </div>
         <div class="wrap-input100 validate-input">
             <form:input cssClass="login-signup-form" path="phone"/>
+            <form:errors cssClass="login-signup-form text-danger" path="phone" />
         </div>
         <div class="mt-4 mb-2">
             <span class="txt1">Role</span>

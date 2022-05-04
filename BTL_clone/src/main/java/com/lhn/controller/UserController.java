@@ -29,7 +29,7 @@ public class UserController {
     @Autowired
     private Cloudinary cloudinary;
     
-    @GetMapping(path = {"/login"})
+    @GetMapping(path = {"/"})
     public String login(Model model){
         return "user-login";
     }

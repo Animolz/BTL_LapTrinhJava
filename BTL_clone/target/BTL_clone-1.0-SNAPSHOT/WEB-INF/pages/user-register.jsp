@@ -30,42 +30,48 @@
                 <c:if test="${error != null}"><div class="txt1 h5 alert alert-danger text-center my-2 w-100 p-2">${error}</div></c:if>
                 <form:form  method="POST" cssClass="overflow-auto" style="height: 800px" action="${action}" modelAttribute="user"
                             enctype="multipart/form-data">
+                    <form:errors path="*" element="div" cssClass="alert alert-danger" />
                     <span class="login-signup-display">Sign up</span>
                     <div class="mt-4 mb-2">
                         <span class="txt1">Email</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Email is required">
                         <form:input cssClass="login-signup-form" type="email" path="email" required="Email is required" />
+                        <form:errors cssClass="login-signup-form text-danger" path="email" />
                     </div>
                     <div class="mt-4 mb-2">
                         <span class="txt1">Username</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Username is required">
                         <form:input cssClass="login-signup-form" type="text" path="username" required="Username is required" />
+                        <form:errors cssClass="login-signup-form text-danger" path="username" />
                     </div>
                     <div class="mt-4 mb-2">
                         <span class="txt1">Password</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
                         <form:input cssClass="login-signup-form" type="password" path="password" required="Password is required" />
+                        <form:errors cssClass="login-signup-form text-danger" path="password" />
                     </div>
                     <div class="mt-4 mb-2">
                         <span class="txt1">Confirm Password</span>
                     </div>
                     <div class="wrap-input100 validate-input">
-                        <form:input cssClass="login-signup-form" type="password" path="" required="Confirm password is required" />
+                        <form:input cssClass="login-signup-form" type="password" path="confirmPassword" required="Confirm password is required" />
                     </div>
                     <div class="mt-3 mb-1">
                         <span class="txt1">Full name</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Fullname is required">
                         <form:input cssClass="post-font" type="text" path="fullname" required="Fullname is required"/>
+                        <form:errors cssClass="login-signup-form text-danger" path="fullname" />
                     </div>
                     <div class="mt-3 mb-1">
                         <span class="txt1">Phone</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Phone is required">
                         <form:input cssClass="post-font" type="text" path="phone" required="Phone is required"/>
+                        <form:errors cssClass="login-signup-form text-danger" path="phone" />
                     </div>
                     <div class="mt-3 mb-1">
                         <span class="txt1">Avatar</span>
@@ -81,6 +87,7 @@
                     </div>
                     <div class="wrap-input100 validate-input mt-2">
                         <form:textarea cssClass="post-font h-100" path="about" placeholder="Tell us something about yourself" rows="3"></form:textarea>
+                        <form:errors cssClass="login-signup-form text-danger" path="about" />
                     </div>
                     <div id="submit-container" class="mt-5">
                         <button type="submit" class="w-100" id="submitBtn">
