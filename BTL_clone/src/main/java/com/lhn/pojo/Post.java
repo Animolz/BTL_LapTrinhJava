@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Post.findAll", query = "SELECT p FROM Post p"),
     @NamedQuery(name = "Post.findById", query = "SELECT p FROM Post p WHERE p.id = :id"),
     @NamedQuery(name = "Post.findByContent", query = "SELECT p FROM Post p WHERE p.content = :content"),
+    @NamedQuery(name = "Post.findByImage", query = "SELECT p FROM Post p WHERE p.image = :image"),
     @NamedQuery(name = "Post.findByPostedDate", query = "SELECT p FROM Post p WHERE p.postedDate = :postedDate"),
     @NamedQuery(name = "Post.findByUpdatedDate", query = "SELECT p FROM Post p WHERE p.updatedDate = :updatedDate"),
     @NamedQuery(name = "Post.findByIsAuction", query = "SELECT p FROM Post p WHERE p.isAuction = :isAuction"),
@@ -55,9 +56,12 @@ public class Post implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
+    @Size(min = 1, max = 200)
     @Column(name = "content")
     private String content;
+    @Size(max = 200)
+    @Column(name = "image")
+    private String image;
     @Basic(optional = false)
     @NotNull
     @Column(name = "posted_date")
@@ -94,6 +98,7 @@ public class Post implements Serializable {
     private Set<Comment> commentSet;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "postId")
     private Set<AuctionPartis> auctionPartisSet;
+    
 
     public Post() {
     }
@@ -126,6 +131,14 @@ public class Post implements Serializable {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Date getPostedDate() {

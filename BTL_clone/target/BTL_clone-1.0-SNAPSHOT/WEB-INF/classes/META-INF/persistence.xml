@@ -4,12 +4,12 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.lhn.pojo.Like</class>
     <class>com.lhn.pojo.AuctionParticipant</class>
-    <class>com.lhn.pojo.Post</class>
     <class>com.lhn.pojo.Tag</class>
     <class>com.lhn.pojo.User</class>
     <class>com.lhn.pojo.Comment</class>
     <class>com.lhn.pojo.Like1</class>
     <class>com.lhn.pojo.AuctionPartis</class>
+    <class>com.lhn.pojo.Post</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/charitydb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

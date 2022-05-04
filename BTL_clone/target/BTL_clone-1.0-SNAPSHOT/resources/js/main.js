@@ -68,4 +68,6 @@ $(document).ready(function (){
        btn.classList.add("active");
        // các button mà chúng ta click vào sẽ được add class active
     }
+    
+    $('#table-users').DataTable();
 });

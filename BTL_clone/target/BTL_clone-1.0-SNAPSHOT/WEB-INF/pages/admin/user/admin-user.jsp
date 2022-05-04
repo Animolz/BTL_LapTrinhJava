@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<c:if test="${error != null}"><div class="txt1 h5 alert alert-danger text-center my-2 w-100 p-2">${error}</div></c:if>
 <h1 class="txt1 h1 text-center my-5">User Management</h1>
 
 <section class="container">
@@ -17,7 +18,7 @@
         </a>
     </div>
 </section>
-<table class="table table-bordered" id="table-users">
+<table class="table table-bordered display" id="table-users">
     <thead class="thead-dark">
       <tr class="text-center">
         <th scope="col">Id</th>
@@ -27,9 +28,10 @@
         <th scope="col">Phone</th>
         <th scope="col">Avatar</th>
         <th scope="col">Is Reported</th>
-        <th scope="col">Id Banned</th>
+        <th scope="col">Is Banned</th>
         <th scope="col">Active</th>
         <th scope="col">Role</th>
+        <th scope="col"></th>
         <th scope="col"></th>
         <th scope="col"></th>
       </tr>
@@ -67,6 +69,14 @@
                 <button class="btn btn-info d-flex justify-content-center p-0 align-items-center w-100 h-100">
                     <i class="fa-solid fa-pencil"></i>
                     <input class="txt1 text-light h6 bg-transparent border-0 m-0 p-0 w-auto" type="button" value="Update">
+                </button>
+            </a>
+        </td>
+        <td class="p-1" style="height: 0px">
+            <a href="<c:url value="/admin-user/ban/${u.id}" />" id="banUser">
+                <button class="btn btn-warning d-flex justify-content-center p-0 align-items-center w-100 h-100">
+                    <i class="fa-solid fa-eye-slash"></i>
+                    <input class="txt1 text-light h6 bg-transparent border-0 m-0 p-0 w-auto" type="button" value="Ban">
                 </button>
             </a>
         </td>

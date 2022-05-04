@@ -53,7 +53,7 @@ public class Tag implements Serializable {
     @NotNull
     @Column(name = "created_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
+    private Date createdDate = new Date();
     @ManyToMany(mappedBy = "tagSet")
     private Set<Post> postSet;
 

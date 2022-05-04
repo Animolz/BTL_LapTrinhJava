@@ -48,7 +48,7 @@
             <div class="main-post-sec">
                 <div class="post-topbar row justify-content-between post">
                     <div class="user-pi col-md-2">
-                        <img src="<c:url value="/pics/avatar.png" />" class="user-pic" />
+                        <img src="${user.avatar}" class="user-pic" />
                     </div>
                     <div class="col-md-8 user-posting">
                         <ul class="d-flex justify-content-between p-0 m-0">
@@ -135,72 +135,78 @@
                         </button>
                     </div>
                     <div id="norm-post" class="tab-item active">
-                        <div class="posts mt-2" id="post">
-                            <div class="post border pb-0">
-                                <div class="post-head border-bottom">
-                                    <div class="row justify-content-between">
-                                        <div class="col-md-10 user-pi d-flex">
-                                            <img src="<c:url value="/pics/avatar.png" />" class="user-pic" />
-                                            <div class="ml-2">
-                                                <h6 class="m-0">John Doe</h6>
-                                                <span><i class="fa-regular fa-clock"></i></span>
-                                                <span>3 min ago</span>
+                        <c:forEach items="${posts}" var="p">
+                        <c:if test="${p[4] == false}">
+                            <div class="posts mt-2" id="post">
+                                <div class="post border pb-0">
+                                    <div class="post-head border-bottom">
+                                        <div class="row justify-content-between">
+                                            <div class="col-md-10 user-pi d-flex">
+                                                <img src="${p[9]}" class="user-pic" />
+                                                <div class="ml-2">
+                                                    <h6 class="m-0">${p[8]}</h6>
+                                                    <span><i class="fa-regular fa-clock"></i></span>
+                                                    <span>${p[3]}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button class="border-0 button-ellips rounded-circle"><i class="fa-2x fa-solid fa-ellipsis"></i></button>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <button class="border-0 button-ellips rounded-circle"><i class="fa-2x fa-solid fa-ellipsis"></i></button>
+                                    </div>
+                                    <div class="post-body mt-3 pb-1 border-bottom">
+                                        <div class="post-content">
+                                            <h6 class="pr-3 pl-3">${p[1]}</h6>
+                                        </div>
+                                        <div class="post-pic">
+                                            <img src="${p[2]}" class="border mt-1">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="post-body mt-3 pb-1 border-bottom">
-                                    <div class="post-content">
-                                        <h6 class="pr-3 pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h6>
+                                    <div class="post-footer mt-1 mb-1 d-flex justify-content-between position-relative">
+                                        <button class="btn btn-outline-light w-100 text-dark general" id="likebtn" type="button" data-toggle="button">
+                                            <i class="fa-regular fa-thumbs-up"></i>
+                                            <input type="button" name="like" value="Like" class="border-0 bg-transparent"/>
+                                            <span>100</span>
+                                        </button>
+                                        <button class="btn btn-outline-light w-100 text-dark general" id="commentsbtn" type="button" >
+                                            <i class="fa-regular fa-comments"></i>
+                                            <input type="button" name="comments" value="Comments" class="border-0 bg-transparent"/>
+                                        </button>
                                     </div>
-                                    <div class="post-pic">
-                                        <img src="<c:url value="/pics/crowd.png" />" class="border mt-1">
-                                    </div>
-                                </div>
-                                <div class="post-footer mt-1 mb-1 d-flex justify-content-between position-relative">
-                                    <button class="btn btn-outline-light w-100 text-dark general" id="likebtn" type="button" data-toggle="button">
-                                        <i class="fa-regular fa-thumbs-up"></i>
-                                        <input type="button" name="like" value="Like" class="border-0 bg-transparent"/>
-                                        <span>100</span>
-                                    </button>
-                                    <button class="btn btn-outline-light w-100 text-dark general" id="commentsbtn" type="button" data-toggle="collapse" data-target="#comment-section">
-                                        <i class="fa-regular fa-comments"></i>
-                                        <input type="button" name="comments" value="Comments" class="border-0 bg-transparent"/>
-                                    </button>
-                                </div>
-                                <div id="comment-section" class="collapse">
-                                    <div class="media border p-2">
-                                        <img src="<c:url value="/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-                                        <div class="media-body">
-                                            <h6>John Doe <small><i class="fa-regular fa-clock"></i> 3 min ago</small></h6>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    <div id="comment-section">
+                                        <div class="media border p-2">
+                                            <img src="<c:url value="/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                                            <div class="media-body">
+                                                <h6>John Doe <small><i class="fa-regular fa-clock"></i> 3 min ago</small></h6>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="media border p-2">
-                                        <img src="<c:url value="/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-                                        <div class="media-body">
-                                            <h6>John Doe <small><i class="fa-regular fa-clock"></i> 3 min ago</small></h6>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                        <div class="media border p-2">
+                                            <img src="<c:url value="/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                                            <div class="media-body">
+                                                <h6>John Doe <small><i class="fa-regular fa-clock"></i> 3 min ago</small></h6>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </c:if>
+                        </c:forEach>
                     </div>
                     <div id="auction-post" class="tab-item">
+                        <c:forEach items="${posts}" var="p">
+                        <c:if test="${p[4] == true}">
                         <div class="posts mt-2" id="auction">
                             <div class="post border pb-0">
                                 <div class="post-head border-bottom">
                                     <div class="row justify-content-between">
                                         <div class="col-md-10 user-pi d-flex">
-                                            <img src="<c:url value="/pics/avatar.png" />" class="user-pic" />
+                                            <img src="${p[9]}" class="user-pic" />
                                             <div class="ml-2">
-                                                <h6 class="m-0">John Doe</h6>
+                                                <h6 class="m-0">${p[8]}</h6>
                                                 <span><i class="fa-regular fa-clock"></i></span>
-                                                <span>3 min ago</span>
+                                                <span>${p[3]}</span>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -210,9 +216,9 @@
                                 </div>
                                 <div class="post-body mt-3 pb-1 border-bottom">
                                     <div class="post-content">
-                                        <h6 class="pr-3 pl-3">This is a shoes</h6>
+                                        <h6 class="pr-3 pl-3">${p[1]}</h6>
                                         <div class="row align-items-center">
-                                            <h6 class="col-md-6 m-0">Current Bid: 0</h6>
+                                            <h6 class="col-md-6 m-0">Current Bid: ${p[5]}</h6>
                                             <button class="btn btn-outline-light w-100 text-dark col-md-6 general" id="bidbtn" type="button" data-toggle="modal" data-target="#auction-bid">
                                                 <i class="fa-solid fa-gavel"></i>
                                                 <input type="button" name="Bid" value="Name your price" class="border-0 bg-transparent"/>
@@ -243,7 +249,7 @@
                                         </div>
                                     </div>
                                     <div class="post-pic">
-                                        <img src="<c:url value="/pics/shoes.png" />" class="border mt-1">
+                                        <img src="${p[2]}" class="border mt-1">
                                     </div>
                                 </div>
                                 <div class="post-footer mt-1 mb-1 d-flex justify-content-between position-relative">
@@ -252,12 +258,12 @@
                                         <input type="button" name="like" value="Like" class="border-0 bg-transparent"/>
                                         <span>100</span>
                                     </button>
-                                    <button class="btn btn-outline-light w-100 text-dark general" id="commentsbtn" type="button" data-toggle="collapse" data-target="#comment-section1">
+                                    <button class="btn btn-outline-light w-100 text-dark general" id="commentsbtn" type="button">
                                         <i class="fa-regular fa-comments"></i>
                                         <input type="button" name="comments" value="Comments" class="border-0 bg-transparent"/>
                                     </button>
                                 </div>
-                                <div id="comment-section1" class="collapse">
+                                <div id="comment-section1">
                                     <div class="media border p-2">
                                         <img src="<c:url value="/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
                                         <div class="media-body">
@@ -275,6 +281,8 @@
                                 </div>
                             </div>
                         </div>
+                    </c:if>
+                    </c:forEach>
                     </div>
                 </section>
             </div>
