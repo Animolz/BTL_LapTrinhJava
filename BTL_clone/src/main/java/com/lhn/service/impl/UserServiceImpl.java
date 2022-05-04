@@ -55,6 +55,5 @@ public class UserServiceImpl implements UserService{
     public boolean unbanUser(User user) {
         return this.userRepository.unbanUser(user);
     }
-   
-    
+
 }

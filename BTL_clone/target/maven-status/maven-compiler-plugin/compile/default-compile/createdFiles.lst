@@ -8,6 +8,7 @@ com\lhn\pojo\Tag.class
 com\lhn\service\UserService.class
 com\lhn\repository\TagRepository.class
 com\lhn\controller\UserController.class
+com\lhn\validator\UserValidator.class
 com\lhn\service\impl\PostServiceImpl.class
 com\lhn\repository\impl\TagRepositoryImpl.class
 com\lhn\repository\impl\PostRepositoryImpl.class

@@ -43,19 +43,19 @@ public class UserRepositoryImpl implements UserRepository{
         
         if(param != null){
             List<Predicate> predicates = new ArrayList<>();
-            if (param.containsKey("id") == true) {
+            if (param.containsKey("id")) {
                 predicates.add(b.equal(root.get("id").as(Integer.class), Integer.parseInt(param.get("id"))));
             }
             
-            if (param.containsKey("kw") == true) {
+            if (param.containsKey("kw")) {
                 predicates.add(b.like(root.get("fullname").as(String.class),String.format("%%%s%%", param.get("kw"))));
             }
             
-            if (param.containsKey("username") == true) {
+            if (param.containsKey("username")) {
                 predicates.add(b.like(root.get("username").as(String.class),String.format("%%%s%%", param.get("username"))));
             }
             
-            if (param.containsKey("phone") == true) {
+            if (param.containsKey("phone")) {
                 predicates.add(b.like(root.get("phone").as(String.class),String.format("%%%s%%", param.get("phone"))));
             }
             Predicate finalCriteria = b.or(predicates.toArray(new Predicate[predicates.size()]));

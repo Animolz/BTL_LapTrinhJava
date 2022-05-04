@@ -128,6 +128,8 @@ public class User implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private Set<AuctionPartis> auctionPartisSet;
     @Transient
+    private String confirmPassword;
+    @Transient
     private MultipartFile file;
     @Transient
     private String confirmPass;
@@ -190,19 +192,19 @@ public class User implements Serializable {
     }
 
     /**
-     * @return the confirmPass
+     * @return the confirmPassword
      */
-    public String getConfirmPass() {
-        return confirmPass;
+    public String getConfirmPassword() {
+        return confirmPassword;
     }
 
     /**
-     * @param confirmPass the confirmPass to set
+     * @param confirmPassword the confirmPassword to set
      */
-    public void setConfirmPass(String confirmPass) {
-        this.confirmPass = confirmPass;
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
-
+    
     public void setEmail(String email) {
         this.email = email;
     }

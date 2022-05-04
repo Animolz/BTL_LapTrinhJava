@@ -24,11 +24,6 @@ public class HomeController {
     @Autowired
     private PostService postService;
     
-    @RequestMapping(path = {"/"})
-    public String login(Model model){
-        return "user-login";
-    }
-    
     @GetMapping(path = {"/home"})
     public String home(Model model){
         model.addAttribute("user", this.userService.getUsers(null).get(0));
@@ -36,4 +31,8 @@ public class HomeController {
         return "index";
     }
     
+    @GetMapping(path = {"/profile"})
+    public String profile(Model model){
+        return "profile";
+    }
 }

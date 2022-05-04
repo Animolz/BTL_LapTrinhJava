@@ -54,6 +54,9 @@ public class UserValidator implements Validator{
         
         if(!u.getPassword().matches("[^\\s-]"))
             errors.rejectValue("username", "Remove whitespace in username");
+        
+        if (!u.getPassword().trim().equals(u.getConfirmPassword().trim()))
+            errors.rejectValue("password", "user.password.error.notMatchMsg");
     }
     
 }

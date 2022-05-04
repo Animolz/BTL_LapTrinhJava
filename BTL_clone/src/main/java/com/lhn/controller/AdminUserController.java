@@ -10,16 +10,21 @@ import com.lhn.pojo.Tag;
 import com.lhn.pojo.User;
 import com.lhn.service.TagService;
 import com.lhn.service.UserService;
+import com.lhn.validator.WebAppValidator;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,7 +40,12 @@ public class AdminUserController {
     @Autowired
     private UserService userService;
     @Autowired
-    private Cloudinary cloudinary;
+    private WebAppValidator userValidator;
+    
+    @InitBinder
+    public void initBinder(WebDataBinder binder){
+        binder.setValidator(userValidator);
+    }
         
     @GetMapping(path = {"/admin-user"})
     public String adminUser(Model model, 
@@ -72,25 +82,33 @@ public class AdminUserController {
     
     @PostMapping(path = {"/admin-user/input/add"})
     public String addUser(Model model,
-            @ModelAttribute(value = "user") User user){
-        if(this.userService.addUser(user))
-            return "redirect:/admin-user";
-        else{
-            model.addAttribute("error", "There's an error when we tried to record your info!!!");
-            return "forward:/admin-user/input";
+            @ModelAttribute(value = "user") @Valid User user,
+            BindingResult result){
+        if(!result.hasErrors()){
+            if(this.userService.addUser(user))
+                return "redirect:/admin-user";
+            else{
+                model.addAttribute("error", "There's an error when we tried to record your info!!!");
+                return "forward:/admin-user/input";
+            }
         }
+        return "admin-user-input";
     }
     
     @PostMapping(path = {"/admin-user/input/{userId}/update"})
     public String updateUser(Model model,
-            @ModelAttribute(value = "user") User user,
-            @PathVariable(value = "userId") int id){
-        if(this.userService.updateUser(user, id))
-            return "redirect:/admin-user";
-        else{
-            model.addAttribute("error", "There's an error when we tried to record your info!!!");
-            return "forward:/admin-user/input";
+            @ModelAttribute(value = "user") @Valid User user,
+            @PathVariable(value = "userId") int id,
+            BindingResult result){
+        if(!result.hasErrors()){
+            if(this.userService.updateUser(user, id))
+                return "redirect:/admin-user";
+            else{
+                model.addAttribute("error", "There's an error when we tried to record your info!!!");
+                return "forward:/admin-user/input";
+            }
         }
+        return "admin-user-input";
     }
     
     @GetMapping(path = {"/admin-user/input/{userId}"})

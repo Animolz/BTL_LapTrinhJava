@@ -24,67 +24,77 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
+        <c:url value="/user-register/add" var="action" />
         <section id="user-login" style="background-image: url('<c:url value="/pics/signup_background.png" />')">
             <div class="container wrap-login-signup pl-5 pr-5">
-                <form class="overflow-auto" style="height: 800px">
+                <c:if test="${error != null}"><div class="txt1 h5 alert alert-danger text-center my-2 w-100 p-2">${error}</div></c:if>
+                <form:form  method="POST" cssClass="overflow-auto" style="height: 800px" action="${action}" modelAttribute="user"
+                            enctype="multipart/form-data">
+                    <form:errors path="*" element="div" cssClass="alert alert-danger" />
                     <span class="login-signup-display">Sign up</span>
                     <div class="mt-4 mb-2">
                         <span class="txt1">Email</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Email is required">
-                        <input class="login-signup-form" type="text" name="email" required="Email is required" />
+                        <form:input cssClass="login-signup-form" type="email" path="email" required="Email is required" />
+                        <form:errors cssClass="login-signup-form text-danger" path="email" />
                     </div>
                     <div class="mt-4 mb-2">
                         <span class="txt1">Username</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Username is required">
-                        <input class="login-signup-form" type="text" name="username" required="Username is required" />
+                        <form:input cssClass="login-signup-form" type="text" path="username" required="Username is required" />
+                        <form:errors cssClass="login-signup-form text-danger" path="username" />
                     </div>
                     <div class="mt-4 mb-2">
                         <span class="txt1">Password</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="login-signup-form" type="password" name="password" required="Password is required" />
+                        <form:input cssClass="login-signup-form" type="password" path="password" required="Password is required" />
+                        <form:errors cssClass="login-signup-form text-danger" path="password" />
                     </div>
                     <div class="mt-4 mb-2">
                         <span class="txt1">Confirm Password</span>
                     </div>
                     <div class="wrap-input100 validate-input">
-                        <input class="login-signup-form" type="password" name="confirm-password" required="Confirm password is required" />
+                        <form:input cssClass="login-signup-form" type="password" path="confirmPassword" required="Confirm password is required" />
                     </div>
                     <div class="mt-3 mb-1">
                         <span class="txt1">Full name</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Fullname is required">
-                        <input class="post-font" type="text" name="fullname" required="Fullname is required"/>
+                        <form:input cssClass="post-font" type="text" path="fullname" required="Fullname is required"/>
+                        <form:errors cssClass="login-signup-form text-danger" path="fullname" />
                     </div>
                     <div class="mt-3 mb-1">
                         <span class="txt1">Phone</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Phone is required">
-                        <input class="post-font" type="text" name="phone" required="Phone is required"/>
+                        <form:input cssClass="post-font" type="text" path="phone" required="Phone is required"/>
+                        <form:errors cssClass="login-signup-form text-danger" path="phone" />
                     </div>
                     <div class="mt-3 mb-1">
                         <span class="txt1">Avatar</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Avatar is required">
-                        <input class="post-font" type="file" name="avatar" required="Avatar is required"/>
+                        <form:input cssClass="post-font" type="file" path="file" required="Avatar is required"/>
                     </div>
                     <div class="wrap-input100 validate-input mt-2 crop">
                         <img id="output2" width="100%" height="auto" class="rounded-circle"/>
                     </div>
-                    <div class="mt-3 mb-1">
+                    <div class="mt-4 mb-1">
                         <span class="txt1">About(Optional)</span>
                     </div>
                     <div class="wrap-input100 validate-input mt-2">
-                        <textarea class="post-font h-100" placeholder="Tell us something about yourself" rows="3"></textarea>
+                        <form:textarea cssClass="post-font h-100" path="about" placeholder="Tell us something about yourself" rows="3"></form:textarea>
+                        <form:errors cssClass="login-signup-form text-danger" path="about" />
                     </div>
                     <div id="submit-container" class="mt-5">
                         <button type="submit" class="w-100" id="submitBtn">
                             <input type="button" name="register-submit" value="Register" class="button"/>
                         </button>
                     </div>
-                </form>
+                </form:form>
             </div>
         </section>
     </body>

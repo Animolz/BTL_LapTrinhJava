@@ -12,7 +12,7 @@ import java.util.Map;
  *
  * @author Admin
  */
-public interface UserService {
+public interface UserService{
     List<User> getUsers(Map<String, String> param);
     boolean addUser(User user);
     boolean updateUser(User user, int id);

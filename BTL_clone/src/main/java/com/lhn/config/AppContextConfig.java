@@ -6,6 +6,12 @@ package com.lhn.config;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.lhn.validator.PassValidator;
+import com.lhn.validator.UserValidator;
+import com.lhn.validator.WebAppValidator;
+import java.util.HashSet;
+import java.util.Set;
+import org.apache.tiles.request.freemarker.servlet.WebappClassTemplateLoader;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -85,6 +91,18 @@ public class AppContextConfig implements WebMvcConfigurer{
         resource.setBasename("message");
         return resource;
     }
+    
+    @Bean
+    public WebAppValidator userValidator(){
+        Set<Validator> springValidators = new HashSet<>();
+        springValidators.add(new UserValidator());
+        springValidators.add(new PassValidator());
+        
+        WebAppValidator w = new WebAppValidator();
+        w.setSpringValidators(springValidators);
+        
+        return w;
+    }
 
     @Bean
     public LocalValidatorFactoryBean validator() {
@@ -98,6 +116,4 @@ public class AppContextConfig implements WebMvcConfigurer{
     public Validator getValidator() {
        return validator();
     }
-    
-    
 }

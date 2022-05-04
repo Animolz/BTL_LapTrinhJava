@@ -8,6 +8,7 @@ C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\controll
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\repository\UserRepository.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\formatter\UserFormatter.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\config\HibernateConfig.java
+C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\validator\UserValidator.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\repository\impl\PostRepositoryImpl.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\pojo\Post.java
 C:\Users\Admin\Desktop\BTL_LapTrinhJava\BTL_clone\src\main\java\com\lhn\service\impl\PostServiceImpl.java

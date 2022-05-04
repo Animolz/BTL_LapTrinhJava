@@ -25,9 +25,10 @@
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        <c:url value="/" var="action" />
         <section id="user-login" style="background-image: url('<c:url value="/pics/login_background.png" />')">
             <div class="container wrap-login-signup">
-                <form>
+                <form action="${action}" method="POST" >
                     <span class="login-signup-display">Login</span>
                     <div class="mt-5 mb-2">
                         <span class="txt1">Username</span>
@@ -42,11 +43,11 @@
                         <input class="login-signup-form" type="password" name="password" required="Password is required"/>
                     </div>
                     <div id="submit-container" class="mt-5">
-                    <button  class="w-100" id="submitBtn"><input type="button" name="login-submit" value="Login" class="button"/></button>
-                </div>
+                        <button  class="w-100" id="submitBtn" type="submit"><input type="button" name="login-submit" value="Login" class="button"/></button>
+                    </div>
                 </form>
                 <div class="txt1 w-100 login-signup-display mt-5 text-capitalize">
-                    <p>Don't have an account? <a href="#">Sign up</a></p>
+                    <p>Don't have an account? <a href="<c:url value="/user-register"/>">Sign up</a></p>
                 </div>
             </div>
         </section>
