@@ -7,12 +7,13 @@ package com.lhn.service;
 import com.lhn.pojo.User;
 import java.util.List;
 import java.util.Map;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  *
  * @author Admin
  */
-public interface UserService {
+public interface UserService extends UserDetailsService{
     List<User> getUsers(Map<String, String> param);
     boolean addUser(User user);
     boolean updateUser(User user, int id);

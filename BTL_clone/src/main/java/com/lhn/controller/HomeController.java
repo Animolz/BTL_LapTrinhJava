@@ -30,22 +30,11 @@ public class HomeController {
     @Autowired
     private PostService postService;
     
-    @RequestMapping(path = {"/"})
-    public String login(Model model){
-        return "user-login";
-    }
-    
-    @GetMapping(path = {"/home"})
+    @GetMapping(path = {"/"})
     public String home(Model model){
         model.addAttribute("user", this.userService.getUsers(null).get(0));
         model.addAttribute("posts",this.postService.getPosts(null));
         return "index";
-    }
-    
-    @GetMapping(path = {"/home?page={page}"})
-    public String homepage(Model model,
-            @RequestParam(value = "page") int page){
-        
     }
     
 }

@@ -7,7 +7,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:if test="${error != ''}"><div class="txt1 h2 text-danger bg-muted text-center my-2 w-100">${error}</div></c:if>
+<c:if test="${error != null}"><div class="txt1 h5 alert alert-danger text-center my-2 w-100 p-2">${error}</div></c:if>
 <c:url var="action" value="/admin-tag/input/${tag.id}/update"/>
 
 <div class="container">
