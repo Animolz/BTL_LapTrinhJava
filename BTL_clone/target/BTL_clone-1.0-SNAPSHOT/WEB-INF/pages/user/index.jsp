@@ -146,7 +146,7 @@
                                                 <div class="ml-2">
                                                     <h6 class="m-0">${p[8]}</h6>
                                                     <span><i class="fa-regular fa-clock"></i></span>
-                                                    <span>${p[3]}</span>
+                                                    <span id="postedDate">${p[3]}</span>
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
@@ -206,7 +206,7 @@
                                             <div class="ml-2">
                                                 <h6 class="m-0">${p[8]}</h6>
                                                 <span><i class="fa-regular fa-clock"></i></span>
-                                                <span>${p[3]}</span>
+                                                <span id="postedDate">${p[3]}</span>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -281,8 +281,8 @@
                                 </div>
                             </div>
                         </div>
-                    </c:if>
-                    </c:forEach>
+                        </c:if>
+                        </c:forEach>
                     </div>
                 </section>
             </div>
@@ -290,3 +290,10 @@
         <div class="col-md-2"></div>
     </div>
 </div>
+<script>
+    let date = document.querySelectorAll("#postedDate");
+    for(let i = 0; i < date.length; i ++){
+        let d = date[i];
+        d.innerText = moment(d.innerText).fromNow();
+    }
+</script>

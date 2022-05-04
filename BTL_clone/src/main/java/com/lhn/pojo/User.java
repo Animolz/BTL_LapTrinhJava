@@ -21,7 +21,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -58,28 +61,32 @@ public class User implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @NotNull(message = "{user.fullname.null}")
+    @Max(value = 45, message = "{user.fullname.max}")
+    @Min(value = 1, message = "{user.fullname.min}")
     @Column(name = "fullname")
     private String fullname;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @NotNull(message = "{user.username.null}")
+    @Max(value = 45, message = "{user.username.max}")
+    @Min(value = 1, message = "{user.username.min}")
     @Column(name = "username")
     private String username;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
+    @NotNull(message = "{user.password.null}")
+    @Max(value = 255, message = "{user.password.max}")
+    @Min(value = 1, message = "{user.password.min}")
     @Column(name = "password")
     private String password;
-    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Size(max = 150)
+    @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="{user.email.format}")//if the field contains email address consider using this annotation to enforce field validation
+    @Size(max = 150, message = "user.email.size")
     @Column(name = "email")
     private String email;
-    // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
+    @Pattern(regexp="/\\(?([0-9]{3})\\)?([ .-]?)([0-9]{3})\\2([0-9]{4})/", message="{user.phone.format}")//if the field contains phone or fax number consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 12)
+    @Max(value = 12, message = "{user.phone.max}")
+    @Min(value = 1, message = "{user.phone.min}")
     @Column(name = "phone")
     private String phone;
     @Basic(optional = false)
@@ -87,14 +94,14 @@ public class User implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "avatar")
     private String avatar = "https://res.cloudinary.com/dyhp6kio1/image/upload/v1651247273/images_sliwp9.png";
-    @Size(max = 255)
+    @Size(max = 255, message = "{user.about.max}")
     @Column(name = "about")
     private String about;
     @Basic(optional = false)
     @NotNull
     @Column(name = "created_time")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createdTime;
+    private Date createdTime = new Date();
     @Basic(optional = false)
     @NotNull
     @Column(name = "is_reported")
@@ -122,6 +129,8 @@ public class User implements Serializable {
     private Set<AuctionPartis> auctionPartisSet;
     @Transient
     private MultipartFile file;
+    @Transient
+    private String confirmPass;
 
     public User() {
     }
@@ -178,6 +187,20 @@ public class User implements Serializable {
 
     public String getEmail() {
         return email;
+    }
+
+    /**
+     * @return the confirmPass
+     */
+    public String getConfirmPass() {
+        return confirmPass;
+    }
+
+    /**
+     * @param confirmPass the confirmPass to set
+     */
+    public void setConfirmPass(String confirmPass) {
+        this.confirmPass = confirmPass;
     }
 
     public void setEmail(String email) {

@@ -6,10 +6,14 @@ package com.lhn.config;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.validation.Validator;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -25,11 +29,14 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
-@ComponentScan(basePackages = { "com.lhn.controller",
-                                "com.lhn.repository",
-                                "com.lhn.service"
-                                })
+@ComponentScan(basePackages = { 
+    "com.lhn.controller",
+    "com.lhn.repository",
+    "com.lhn.service",
+    "com.lhn.validator"
+})
 public class AppContextConfig implements WebMvcConfigurer{
+    
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configure){
         configure.enable();
@@ -70,4 +77,27 @@ public class AppContextConfig implements WebMvcConfigurer{
         
         return c;
     }
+    
+    @Bean
+    public MessageSource messageSource() {
+        ResourceBundleMessageSource resource 
+        = new ResourceBundleMessageSource();
+        resource.setBasename("message");
+        return resource;
+    }
+
+    @Bean
+    public LocalValidatorFactoryBean validator() {
+        LocalValidatorFactoryBean v = new LocalValidatorFactoryBean();
+        v.setValidationMessageSource(messageSource());
+       
+        return v;
+    }
+    
+    @Override
+    public Validator getValidator() {
+       return validator();
+    }
+    
+    
 }

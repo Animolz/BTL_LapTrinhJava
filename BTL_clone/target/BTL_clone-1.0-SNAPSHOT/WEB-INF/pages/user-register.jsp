@@ -26,7 +26,7 @@
     <body>
         <section id="user-login" style="background-image: url('<c:url value="/pics/signup_background.png" />')">
             <div class="container wrap-login-signup pl-5 pr-5">
-                <form>
+                <form class="overflow-auto" style="height: 800px">
                     <span class="login-signup-display">Sign up</span>
                     <div class="mt-4 mb-2">
                         <span class="txt1">Email</span>
@@ -52,56 +52,37 @@
                     <div class="wrap-input100 validate-input">
                         <input class="login-signup-form" type="password" name="confirm-password" required="Confirm password is required" />
                     </div>
+                    <div class="mt-3 mb-1">
+                        <span class="txt1">Full name</span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Fullname is required">
+                        <input class="post-font" type="text" name="fullname" required="Fullname is required"/>
+                    </div>
+                    <div class="mt-3 mb-1">
+                        <span class="txt1">Phone</span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Phone is required">
+                        <input class="post-font" type="text" name="phone" required="Phone is required"/>
+                    </div>
+                    <div class="mt-3 mb-1">
+                        <span class="txt1">Avatar</span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Avatar is required">
+                        <input class="post-font" type="file" name="avatar" required="Avatar is required"/>
+                    </div>
+                    <div class="wrap-input100 validate-input mt-2 crop">
+                        <img id="output2" width="100%" height="auto" class="rounded-circle"/>
+                    </div>
+                    <div class="mt-3 mb-1">
+                        <span class="txt1">About(Optional)</span>
+                    </div>
+                    <div class="wrap-input100 validate-input mt-2">
+                        <textarea class="post-font h-100" placeholder="Tell us something about yourself" rows="3"></textarea>
+                    </div>
                     <div id="submit-container" class="mt-5">
-                        <button type="button" class="w-100" id="submitBtn" data-toggle="modal" data-target="#register-modal">
+                        <button type="submit" class="w-100" id="submitBtn">
                             <input type="button" name="register-submit" value="Register" class="button"/>
                         </button>
-                    </div>
-                    <!-- Modal -->
-                    <div class="modal hide fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="fillUserInfo" aria-hidden="true">
-                      <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="fillUserInfo">Tell us about yourself</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                          </div>
-                          <div class="modal-body">
-                            <div class="mt-3 mb-1">
-                                <span class="txt1">Full name</span>
-                            </div>
-                            <div class="wrap-input100 validate-input" data-validate="Fullname is required">
-                                <input class="post-font" type="text" name="fullname" required="Fullname is required"/>
-                            </div>
-                            <div class="mt-3 mb-1">
-                                <span class="txt1">Phone</span>
-                            </div>
-                            <div class="wrap-input100 validate-input" data-validate="Phone is required">
-                                <input class="post-font" type="text" name="phone" required="Phone is required"/>
-                            </div>
-                            <div class="mt-3 mb-1">
-                                <span class="txt1">Avatar</span>
-                            </div>
-                            <div class="wrap-input100 validate-input" data-validate="Avatar is required">
-                                <input class="post-font" type="file" name="avatar" required="Avatar is required"/>
-                            </div>
-                            <div class="wrap-input100 validate-input mt-2 crop">
-                                <img id="output2" width="100%" height="auto" class="rounded-circle"/>
-                            </div>
-                            <div class="mt-3 mb-1">
-                                <span class="txt1">About(Optional)</span>
-                            </div>
-                            <div class="wrap-input100 validate-input mt-2">
-                                <textarea class="post-font h-100" placeholder="Tell us something about yourself" rows="3"></textarea>
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
-                          </div>
-                        </div>
-                      </div>
                     </div>
                 </form>
             </div>

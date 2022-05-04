@@ -52,9 +52,8 @@ public class PostRepositoryImpl implements PostRepository{
                 predicates.add(b.equal(rootP.get("isAuction").as(Boolean.class), Boolean.parseBoolean(param.get("isAuction"))));
             if(param.containsKey("userId"))
                 predicates.add(b.equal(rootP.get("userId").as(Integer.class), Integer.parseInt(param.get("userId"))));
-            
-            q = q.where(predicates.toArray(new Predicate[]{}));
         }
+        q = q.where(predicates.toArray(new Predicate[]{}));
         
         q.multiselect(rootP.get("id"),rootP.get("content"),rootP.get("image"),rootP.get("postedDate"),rootP.get("isAuction"),rootP.get("price"),
                         rootP.get("active"), rootU.get("id"),rootU.get("username"), rootU.get("avatar"));
