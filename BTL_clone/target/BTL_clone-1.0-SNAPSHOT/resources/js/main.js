@@ -29,7 +29,7 @@ $(document).ready(function (){
       }
     });
     
-    $('input[name="avatar"]').change(function(){
+    $('#img-output2').change(function(){
       const file = this.files[0];
       console.log(file);
       if (file){
@@ -37,6 +37,19 @@ $(document).ready(function (){
         reader.onload = function(event){
           console.log(event.target.result);
           $('#output2').attr('src', event.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+    
+    $('#img-output3').change(function(){
+      const file = this.files[0];
+      console.log(file);
+      if (file){
+        let reader = new FileReader();
+        reader.onload = function(event){
+          console.log(event.target.result);
+          $('#output3').attr('src', event.target.result);
         };
         reader.readAsDataURL(file);
       }
@@ -51,23 +64,34 @@ $(document).ready(function (){
 
 
     function openTabs(el) {
-       var btn = el.currentTarget; // lắng nghe sự kiện và hiển thị các element
-       var post = btn.dataset.post; // lấy giá trị trong data-electronic
+       var btn = el.currentTarget;
+       var post = btn.dataset.post; 
 
        tabContent.forEach(function(el) {
           el.classList.remove("active");
-       }); //lặp qua các tab content để remove class active
+       }); 
 
        tabLinks.forEach(function(el) {
           el.classList.remove("active");
-       }); //lặp qua các tab links để remove class active
+       }); 
 
        document.querySelector("#" + post).classList.add("active");
-       // trả về phần tử đầu tiên có id="" được add class active
-
-       btn.classList.add("active");
-       // các button mà chúng ta click vào sẽ được add class active
+       
+       btn.classList.add("active");      
     }
     
-
+    $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                    $('#back-to-top').fadeIn();
+            } else {
+                    $('#back-to-top').fadeOut();
+            }
+    });
+    // scroll body to 0px on click
+    $('#back-to-top').click(function () {
+            $('body,html').animate({
+                    scrollTop: 0
+            }, 400);
+            return false;
+    });
 });

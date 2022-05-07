@@ -6,18 +6,17 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <div class="container mt-5">
     <div class="row justify-content-between">
         <div class="col-lg-3 col-md-4 p-0">
             <div class="user-data text-center">
                 <div class="user-profile">
                     <div class="user-picture w-100">
-                        <img src="${user.avatar}" alt="" class="user-pic"/>
+                        <img src="${currentUser.avatar}" alt="" class="user-pic"/>
                     </div>
                 </div>
                 <div class="user-username">
-                    <h3 class="text-dark font-weight-bold txt1 h1">${user.fullname}</h3>
+                    <h3 class="text-dark font-weight-bold txt1 h1">${currentUser.fullname}</h3>
                     <span class="txt1 h4">Welcome to Carity</span>
                 </div>
             </div>
@@ -28,18 +27,14 @@
                 </div>
                 <div class="sg-content">
                     <ul class='sg-users p-0 ml-4 mr-5'>
+                        <c:forEach items="${users}" var="u">
                         <li>
-                            <img src="<c:url value="/pics/avatar.png" />" class="user-pic" />
-                            <h6>Temp</h6>
+                            <a href="<c:url value="/profile/${u.username}"/>">
+                            <img src="${u.avatar}" class="user-pic" />
+                            <h6>${u.username}</h6>
+                            </a>
                         </li>
-                        <li>
-                            <img src="<c:url value="/pics/avatar.png" />" class="user-pic" />
-                            <h6>Temp</h6>
-                        </li>
-                        <li>
-                            <img src="<c:url value="/pics/avatar.png" />" class="user-pic" />
-                            <h6>Temp</h6>
-                        </li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>
@@ -47,77 +42,21 @@
         <div class="col-lg-6 col-md-8">
             <div class="main-post-sec">
                 <div class="post-topbar row justify-content-between post">
+                    <c:if test="${error != null}"><div class="alert alert-danger text-center my-2 w-100 p-2">${error}</div></c:if>
                     <div class="user-pi col-md-2">
-                        <img src="${user.avatar}" class="user-pic" />
+                        <img src="${currentUser.avatar}" class="user-pic" />
                     </div>
                     <div class="col-md-8 user-posting">
                         <ul class="d-flex justify-content-between p-0 m-0">
                             <li>
-                                <button class="border-0" type="button" data-toggle="modal" data-target="#post-story">Post your Story</button>
-                                <div class="modal hide fade" id="post-story" tabindex="-1" role="dialog" aria-labelledby="post-story" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="post-story">Post Your Story</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="wrap-input100 validate-input">
-                                                    <textarea class="post-font h-100" placeholder="Share your experience" rows="3"></textarea>
-                                                </div>
-                                                <div class="wrap-input100 validate-input mt-2">
-                                                    <input class="post-font" type="file" accept="image/gif, image/jpeg, image/png" name="story-pic" id="story-pic"/>
-                                                </div>
-                                                <div class="wrap-input100 validate-input mt-2">
-                                                    <img id="output" width="100%" height="auto">
-                                                </div>
-                                            </form>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <button type="submit" class="btn btn-primary" data-dismiss="modal">Post</button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                </div>
+                                <a href="<c:url value="/home/upstory" />" class="border-0 rounded" >
+                                    <button style="font-size: 13px" class="border-0 bg-transparent txt1" type="button" >Post your Story</button>
+                                </a>
                             </li>
                             <li>
-                                <button class="ac border-0" type="button" data-toggle="modal" data-target="#post-auction">Hold an Auction</button>
-                                <div class="modal hide fade" id="post-auction" tabindex="-1" role="dialog" aria-labelledby="post-auction" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                      <div class="modal-content">
-                                        <div class="modal-header">
-                                          <h5 class="modal-title" id="post-auction">Open An Auction</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                          </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="wrap-input100 validate-input">
-                                                    <textarea class="post-font h-100" placeholder="About your item" rows="3"></textarea>
-                                                </div>
-                                                <div class="wrap-input100 validate-input mt-2">
-                                                    <input class="post-font" type="number" min="0" id="price" name="price" placeholder="Enter min item price" step="1000"/>
-                                                </div>
-                                                <h6 class="post-font border-0 mt-3 mb-0">Your item image</h6>
-                                                <div class="wrap-input100 validate-input">
-                                                    <input class="post-font" type="file" accept="image/gif, image/jpeg, image/png, image/jpg" name="item-pic" id="item-pic"/>
-                                                </div>
-                                                <div class="wrap-input100 validate-input">
-                                                    <img id="output1" width="100%" height="auto">
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <button type="submit" class="btn btn-primary" data-dismiss="modal">Post</button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                </div>
+                                <a class="ac border-0 rounded" href="<c:url value="/home/upauction" />">
+                                    <button style="font-size: 13px" class="border-0 bg-transparent txt1" type="button" >Hold an Auction</button>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -150,7 +89,20 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
-                                                <button class="border-0 button-ellips rounded-circle"><i class="fa-2x fa-solid fa-ellipsis"></i></button>
+                                                <button class="border-0 button-ellips rounded-circle" data-toggle="collapse" data-target="#post-option${p[0]}"><i class="fa-2x fa-solid fa-ellipsis"></i></button>
+                                                <c:choose>
+                                                    <c:when test="${p[7] ==  currentUser.id}">
+                                                        <div class="position-absolute bg-secondary p-2 collapse" id="post-option${p[0]}" style="top: -5rem;right: 1.5rem; width: 7rem; height: 5rem;border-radius: 10px">
+                                                            <a href="<c:url value="/update-post/${p[0]}" />" id="up${p[0]}" class="btn btn-info txt1 mb-1 text-light" style="font-size: 12px;">Update Post</a>
+                                                            <a href="<c:url value="/del-post?postId=${p[0]}" />" id="del${p[0]}" class="btn btn-danger txt1 text-light" style="font-size: 12px;">Delete Post</a>
+                                                        </div>
+                                                    </c:when>
+                                                    <c:when test="${p[7] !=  currentUser.id}">
+                                                        <div class="position-absolute bg-secondary p-2 collapse" id="post-option${p[0]}" style="top: -3rem;right: 1.5rem; width: 7rem; height: 5rem;border-radius: 10px">
+                                                            <a href="<c:url value="/report?userId=${p[7]}" />" class="btn btn-info txt1 mb-1 text-light" style="font-size: 12px;">Report</a>
+                                                        </div>
+                                                    </c:when>
+                                                </c:choose>
                                             </div>
                                         </div>
                                     </div>
@@ -161,33 +113,29 @@
                                         <div class="post-pic">
                                             <img src="${p[2]}" class="border mt-1">
                                         </div>
+                                        <div class="tag">
+                                            
+                                        </div>
                                     </div>
-                                    <div class="post-footer mt-1 mb-1 d-flex justify-content-between position-relative">
+                                    <div class="post-footer mt-1 mb-3 justify-content-between position-relative d-flex">
                                         <button class="btn btn-outline-light w-100 text-dark general" id="likebtn" type="button" data-toggle="button">
                                             <i class="fa-regular fa-thumbs-up"></i>
                                             <input type="button" name="like" value="Like" class="border-0 bg-transparent"/>
                                             <span>100</span>
                                         </button>
-                                        <button class="btn btn-outline-light w-100 text-dark general" id="commentsbtn" type="button" >
-                                            <i class="fa-regular fa-comments"></i>
-                                            <input type="button" name="comments" value="Comments" class="border-0 bg-transparent"/>
+                                        <button class="btn btn-outline-light w-100 text-dark general" onclick="showComment(${p[0]}); this.disabled=true" id="commentsbtn${p[0]}" type="button">
+                                            <i class="fa-solid fa-comment"></i>
+                                            <input type="button" name="comment" value="Comment" class="border-0 bg-transparent"/>
                                         </button>
                                     </div>
-                                    <div id="comment-section">
-                                        <div class="media border p-2">
-                                            <img src="<c:url value="/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-                                            <div class="media-body">
-                                                <h6>John Doe <small><i class="fa-regular fa-clock"></i> 3 min ago</small></h6>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                            </div>
-                                        </div>
-                                        <div class="media border p-2">
-                                            <img src="<c:url value="/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-                                            <div class="media-body">
-                                                <h6>John Doe <small><i class="fa-regular fa-clock"></i> 3 min ago</small></h6>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                            </div>
-                                        </div>
+                                    <div class="d-flex mb-2">
+                                        <textarea placeholder="Share your thoughts..." id="comment-content${p[0]}" class="post-font border" name="comment"></textarea>
+                                        <button class="btn btn-success d-flex justify-content-center p-2 align-items-center border-0 ml-1" onclick="addComment(${p[0]},${currentUser.id})" onmouseup="showComment(${p[0]})" type="button">
+                                            <i class="fa-solid fa-plus text-light"></i>
+                                            <input class="txt1 text-light h6 bg-transparent border-0 m-0 p-0 w-auto" type="button" value="Comment">
+                                        </button>
+                                    </div>
+                                    <div id="comment-section${p[0]}">
                                     </div>
                                 </div>
                             </div>
@@ -209,8 +157,21 @@
                                                 <span id="postedDate">${p[3]}</span>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <button class="border-0 button-ellips rounded-circle"><i class="fa-2x fa-solid fa-ellipsis"></i></button>
+                                        <div class="col-md-2 position-relative">
+                                            <button class="border-0 button-ellips rounded-circle" data-toggle="collapse" data-target="#post-option${p[0]}"><i class="fa-2x fa-solid fa-ellipsis"></i></button>
+                                            <c:choose>
+                                                <c:when test="${p[7] ==  currentUser.id}">
+                                                    <div class="position-absolute bg-secondary p-2 collapse" id="post-option${p[0]}" style="top: -5rem;right: 1.5rem; width: 7rem; height: 5rem;border-radius: 10px">
+                                                        <a href="<c:url value="/update-post/${p[0]}" />" class="btn btn-info txt1 mb-1 text-light" style="font-size: 12px;">Update Post</a>
+                                                        <a href="<c:url value="/del-post?postId=${p[0]}" />" class="btn btn-danger txt1 text-light" style="font-size: 12px;">Delete Post</a>
+                                                    </div>
+                                                </c:when>
+                                                <c:when test="${p[7] !=  currentUser.id}">
+                                                    <div class="position-absolute bg-secondary p-2 collapse" id="post-option${p[0]}" style="top: -5rem;right: 1.5rem; width: 7rem; height: 5rem;border-radius: 10px">
+                                                        <a href="#" class="btn btn-info txt1 mb-1 text-light" style="font-size: 12px;">Report Post</a>
+                                                    </div>
+                                                </c:when>
+                                            </c:choose>
                                         </div>
                                     </div>
                                 </div>
@@ -258,26 +219,19 @@
                                         <input type="button" name="like" value="Like" class="border-0 bg-transparent"/>
                                         <span>100</span>
                                     </button>
-                                    <button class="btn btn-outline-light w-100 text-dark general" id="commentsbtn" type="button">
+                                    <button class="btn btn-outline-light w-100 text-dark general" onclick="showComment(${p[0]}); this.disabled=true" id="commentsbtn${p[0]}" type="button">
                                         <i class="fa-regular fa-comments"></i>
                                         <input type="button" name="comments" value="Comments" class="border-0 bg-transparent"/>
                                     </button>
                                 </div>
-                                <div id="comment-section1">
-                                    <div class="media border p-2">
-                                        <img src="<c:url value="/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-                                        <div class="media-body">
-                                            <h6>John Doe <small><i class="fa-regular fa-clock"></i> 3 min ago</small></h6>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        </div>
-                                    </div>
-                                    <div class="media border p-2">
-                                        <img src="<c:url value="/pics/avatar.png" />" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
-                                        <div class="media-body">
-                                            <h6>John Doe <small><i class="fa-regular fa-clock"></i> 3 min ago</small></h6>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        </div>
-                                    </div>
+                                <div class="d-flex mb-2">
+                                    <textarea placeholder="Share your thoughts..." id="comment-content${p[0]}" class="post-font border" name="comment"></textarea>
+                                    <button class="btn btn-success d-flex justify-content-center p-2 align-items-center border-0 ml-1" onclick="addComment(${p[0]},${currentUser.id})" onmouseup="showComment(${p[0]})" type="button">
+                                        <i class="fa-solid fa-plus text-light"></i>
+                                        <input class="txt1 text-light h6 bg-transparent border-0 m-0 p-0 w-auto" type="button" value="Comment">
+                                    </button>
+                                </div>
+                                <div id="comment-section${p[0]}">
                                 </div>
                             </div>
                         </div>
@@ -287,13 +241,83 @@
                 </section>
             </div>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-2">
+            <nav aria-label="Page navigation example" class="sticky-top">
+                <ul class="nav flex-column nav-pills text-center " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <c:forEach begin="1" end="${Math.ceil(counter/10)}" var="i">
+                        <li class="page-item btn btn-secondary m-1 p-0"><a class="page-link bg-transparent border-0 text-light" href="<c:url value="/home"/>?page=${i}">${i}</a></li>
+                    </c:forEach>
+                </ul>
+            </nav>
+        </div>
     </div>
 </div>
+<a id="back-to-top" href="#" class="btn btn-dark text-light btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
 <script>
-    let date = document.querySelectorAll("#postedDate");
-    for(let i = 0; i < date.length; i ++){
-        let d = date[i];
-        d.innerText = moment(d.innerText).fromNow();
-    }
+    window.onload = function (){
+        let date = document.querySelectorAll("#postedDate");
+        for(let i = 0; i < date.length; i ++){
+            let d = date[i];
+            d.innerText = formattime(d.innerText);
+        }
+    };
+    function showComment(postId){
+        fetch("/BTL_clone/api/load-comments",{
+            method: 'post',
+            body: JSON.stringify({
+                "postId": postId
+            }),
+            headers: {
+            "Content-Type": "application/json"
+            } 
+        }).then(function(res){
+            console.info(res);
+            return res.json();
+        }).then(function (data){
+            let area = document.getElementById("comment-section"+postId);
+            for (var i = 0; i < data.length; i++) {
+                area.innerHTML = area.innerHTML + `
+                        <div class="media border p-2 mt-1 align-items-center">
+                                        <img src="`+ data[i].userId.avatar +`" alt="John Doe" class="mr-3 rounded-circle" style="width:60px;">
+                                        <div class="media-body">
+                                            <h6>`+ data[i].userId.username +`<small class="text-muted"><i class="fa-regular fa-clock ml-2 text-muted"></i> `+ formattime(data[i].createdDate) +`</small></h6>
+                                            <p>`+ data[i].comment +`</p>
+                                        </div>
+                                    </div>`;
+            }
+        });
+    };
+    
+    function addComment(postId, userId){
+            $('#commentsbtn'+postId).prop('disabled', true);
+            fetch("/BTL_clone/api/add-comment",{
+            method: 'post',
+            body: JSON.stringify({
+                "comment": document.getElementById("comment-content"+postId).value,
+                "postId": postId,
+                "userId": userId
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            } 
+        }).then(function(res){
+            console.info(res);
+            return res.json();
+        }).then(function (data){
+            let area = document.getElementById("comment-section"+postId);
+            area.innerHTML =`
+                        <div class="media border p-2 mt-1 align-items-center">
+                                        <img src="`+ data[0].userId.avatar +`" alt="John Doe" class="mr-3 rounded-circle" style="width:60px;">
+                                        <div class="media-body">
+                                            <h6>`+ data[0].userId.username +`<small class="text-muted"><i class="fa-regular fa-clock ml-2 text-muted"></i> `+ formattime(data[0].createdDate) +`</small></h6>
+                                            <p>`+ data[0].comment +`</p>
+                                        </div>
+                                    </div>` + area.innerHTML;
+        });
+    };
+
+    function formattime(date){
+        return moment(date).locale("vi").fromNow();
+    };
+    
 </script>

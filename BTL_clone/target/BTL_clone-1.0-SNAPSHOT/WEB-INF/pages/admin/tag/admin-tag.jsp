@@ -16,7 +16,7 @@
             <input type="text" placeholder="Search tag..." name="kw" class="form-control">
             <button class="ml-2 btn btn-primary" type="submit"><input class="txt1 h6 bg-transparent border-0 m-0 text-light" type="button" value="Search"></button>
         </form>
-        <a href="<c:url value="/admin-tag/input"/> " class="btn btn-success col-lg-3 d-flex justify-content-center p-0 align-items-center">
+        <a href="<c:url value="/admin/admin-tag/input"/> " class="btn btn-success col-lg-3 d-flex justify-content-center p-0 align-items-center">
             <button class="bg-transparent d-flex justify-content-center p-0 align-items-center border-0" type="button" data-toggle="modal" data-target>
                 <i class="fa-solid fa-plus text-light"></i>
                 <input class="txt1 text-light h6 bg-transparent border-0 m-0 p-0 w-auto" type="button" value="Add Tag">
@@ -38,7 +38,7 @@
             <th scope="row">${t.id}</th>
             <td>${t.tag}</td>
             <td class="p-1" style="height: 0px">
-                <a href="<c:url value="/admin-tag/input/${t.id}" />" id="updateUser">
+                <a href="<c:url value="/admin/admin-tag/input/${t.id}" />" id="updateUser">
                     <button class="btn btn-info d-flex justify-content-center p-0 align-items-center w-100 h-100">
                         <i class="fa-solid fa-pencil"></i>
                         <input class="txt1 text-light h6 bg-transparent border-0 m-0 p-0 w-auto" type="button" value="Update">
@@ -46,7 +46,7 @@
                 </a>
             </td>
             <td class="p-1" style="height: 0px">
-                <a href="<c:url value="/admin-tag/${t.id}" />" id="deleteUser">
+                <a href="<c:url value="/admin/admin-tag/${t.id}" />" id="deleteUser">
                     <button class="btn btn-danger d-flex justify-content-center p-0 align-items-center w-100 h-100">
                         <i class="fa-solid fa-trash"></i>
                         <input class="txt1 text-light h6 bg-transparent border-0 m-0 p-0 w-auto" type="button" value="Delete">

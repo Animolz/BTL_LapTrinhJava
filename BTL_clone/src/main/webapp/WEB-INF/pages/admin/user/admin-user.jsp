@@ -10,7 +10,7 @@
             <input type="text" placeholder="Search user..." name="kw" class="form-control">
             <button class="ml-2 btn btn-primary" type="submit"><input class="txt1 h6 bg-transparent border-0 m-0 text-light" type="button" value="Search"></button>
         </form>
-        <a href="<c:url value="/admin-user/input"/> " class="btn btn-success col-lg-3 d-flex justify-content-center p-0 align-items-center">
+        <a href="<c:url value="/admin/admin-user/input"/> " class="btn btn-success col-lg-3 d-flex justify-content-center p-0 align-items-center">
             <button class="bg-transparent d-flex justify-content-center p-0 align-items-center border-0" type="button">
                 <i class="fa-solid fa-plus text-light"></i>
                 <input class="txt1 text-light h6 bg-transparent border-0 m-0 p-0 w-auto" type="button" value="Add user">
@@ -63,9 +63,9 @@
                 <c:otherwise><i class="fa-solid fa-circle-xmark text-danger"></i></c:otherwise>
             </c:choose>
         </td>
-        <td>${u.role}</td>
+        <td>${u.userRole}</td>
         <td class="p-1" style="height: 0px">
-            <a href="<c:url value="/admin-user/input/${u.id}" />" id="updateUser">
+            <a href="<c:url value="/admin/admin-user/input/${u.id}" />" id="updateUser">
                 <button class="btn btn-info d-flex justify-content-center p-0 align-items-center w-100 h-100">
                     <i class="fa-solid fa-pencil"></i>
                     <input class="txt1 text-light h6 bg-transparent border-0 m-0 p-0 w-auto" type="button" value="Update">
@@ -73,7 +73,7 @@
             </a>
         </td>
         <td class="p-1" style="height: 0px">
-            <a href="<c:url value="/admin-user/ban/${u.id}" />" id="banUser">
+            <a href="<c:url value="/admin/admin-user/ban/${u.id}" />" id="banUser">
                 <button class="btn btn-warning d-flex justify-content-center p-0 align-items-center w-100 h-100">
                     <i class="fa-solid fa-eye-slash"></i>
                     <input class="txt1 text-light h6 bg-transparent border-0 m-0 p-0 w-auto" type="button" value="Ban">
@@ -81,7 +81,7 @@
             </a>
         </td>
         <td class="p-1" style="height: 0px">
-            <a href="<c:url value="/admin-user/${u.id}" />" id="deleteUser">
+            <a href="<c:url value="/admin/admin-user/${u.id}" />" id="deleteUser">
                 <button class="btn btn-danger d-flex justify-content-center p-0 align-items-center w-100 h-100">
                     <i class="fa-solid fa-eye-slash"></i>
                     <input class="txt1 text-light h6 bg-transparent border-0 m-0 p-0 w-auto" type="button" value="Disable">

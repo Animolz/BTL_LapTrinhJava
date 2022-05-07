@@ -43,11 +43,12 @@ public class AdminUserController {
     private WebAppValidator userValidator;
     
     @InitBinder
-    public void initBinder(WebDataBinder binder){
+    public void initBinding(WebDataBinder binder){
         binder.setValidator(userValidator);
     }
+
         
-    @GetMapping(path = {"/admin-user"})
+    @GetMapping(path = {"/admin/admin-user"})
     public String adminUser(Model model, 
             @RequestParam(value = "kw", required = false) String kw){
         if(kw != null && !kw.isEmpty()){
@@ -64,54 +65,54 @@ public class AdminUserController {
         return "admin-user";
     }
     
-    @GetMapping(path = {"/admin-user/{userId}"})
+    @GetMapping(path = {"/admin/admin-user/{userId}"})
     public String delete(@PathVariable(name = "userId") String userId){
         Map<String, String> param = new HashMap<>();
         param.put("id", userId);
         User user = this.userService.getUsers(param).get(0);
         if(this.userService.updateActive(user))
-            return "redirect:/admin-user";
+            return "redirect:/admin/admin-user";
         else return "admin-user";
     }
     
-    @GetMapping(path = {"/admin-user/input"})
+    @GetMapping(path = {"/admin/admin-user/input"})
     public String inputUser(Model model){
         model.addAttribute("user", new User());
         return "admin-user-input";
     }
     
-    @PostMapping(path = {"/admin-user/input/add"})
+    @PostMapping(path = {"/admin/admin-user/input/add"})
     public String addUser(Model model,
             @ModelAttribute(value = "user") @Valid User user,
             BindingResult result){
         if(!result.hasErrors()){
             if(this.userService.addUser(user))
-                return "redirect:/admin-user";
+                return "redirect:/admin/admin-user";
             else{
                 model.addAttribute("error", "There's an error when we tried to record your info!!!");
-                return "forward:/admin-user/input";
+                return "admin-user-input";
             }
         }
         return "admin-user-input";
     }
     
-    @PostMapping(path = {"/admin-user/input/{userId}/update"})
+    @PostMapping(path = {"/admin/admin-user/input/{userId}/update"})
     public String updateUser(Model model,
             @ModelAttribute(value = "user") @Valid User user,
             @PathVariable(value = "userId") int id,
             BindingResult result){
         if(!result.hasErrors()){
             if(this.userService.updateUser(user, id))
-                return "redirect:/admin-user";
+                return "redirect:/admin/admin-user";
             else{
                 model.addAttribute("error", "There's an error when we tried to record your info!!!");
-                return "forward:/admin-user/input";
+                return "admin-user-input1";
             }
         }
-        return "admin-user-input";
+        return "admin-user-input1";
     }
     
-    @GetMapping(path = {"/admin-user/input/{userId}"})
+    @GetMapping(path = {"/admin/admin-user/input/{userId}"})
     public String inputUser1(Model model,
             @PathVariable(value = "userId") String userId){
         if(userId != null && !userId.isEmpty()){
@@ -123,7 +124,7 @@ public class AdminUserController {
         return "admin-user-input1";
     }
     
-    @GetMapping(path = "/admin-user/ban/{userId}")
+    @GetMapping(path = "/admin/admin-user/ban/{userId}")
     public String banUser(Model model,
             @PathVariable(value = "userId") String userId){
         if(userId != null && !userId.isEmpty()){
@@ -132,18 +133,18 @@ public class AdminUserController {
             User user = this.userService.getUsers(param).get(0);
             if(user.getIsBanned() == false){
                 if(this.userService.banUser(user))
-                    return "redirect:/admin-user";
+                    return "redirect:/admin/admin-user";
                 else{
-                model.addAttribute("error", "There's an error when we tried to ban a user!!!");
-                return "forward:/admin-user";
+                    model.addAttribute("error", "There's an error when we tried to ban a user!!!");
+                    return "admin-user";
                 }
             }else {
                  if(this.userService.unbanUser(user))
-                    return "redirect:/admin-user";
+                    return "redirect:/admin/admin-user";
                 else{
                 model.addAttribute("error", "There's an error when we tried to ban a user!!!");
-                return "forward:/admin-user";
-                 }
+                return "admin-user";
+                }
             }
         }
         return null;

@@ -4,9 +4,11 @@
  */
 package com.lhn.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
+import javax.annotation.Nullable;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,10 +26,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -42,7 +46,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Post.findByContent", query = "SELECT p FROM Post p WHERE p.content = :content"),
     @NamedQuery(name = "Post.findByImage", query = "SELECT p FROM Post p WHERE p.image = :image"),
     @NamedQuery(name = "Post.findByPostedDate", query = "SELECT p FROM Post p WHERE p.postedDate = :postedDate"),
-    @NamedQuery(name = "Post.findByUpdatedDate", query = "SELECT p FROM Post p WHERE p.updatedDate = :updatedDate"),
     @NamedQuery(name = "Post.findByIsAuction", query = "SELECT p FROM Post p WHERE p.isAuction = :isAuction"),
     @NamedQuery(name = "Post.findByActive", query = "SELECT p FROM Post p WHERE p.active = :active"),
     @NamedQuery(name = "Post.findByPrice", query = "SELECT p FROM Post p WHERE p.price = :price")})
@@ -55,23 +58,22 @@ public class Post implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 200)
+    @NotNull(message = "{post.content.null}")
+    @Size.List({
+        @Size(min = 1 ,message = "{post.content.min}"),
+        @Size(max = 200 ,message = "{post.content.max}")
+    })
     @Column(name = "content")
     private String content;
     @Size(max = 200)
+    @Nullable
     @Column(name = "image")
     private String image;
     @Basic(optional = false)
     @NotNull
     @Column(name = "posted_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date postedDate;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "updated_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updatedDate;
+    private Date postedDate = new Date();
     @Basic(optional = false)
     @NotNull
     @Column(name = "is_auction")
@@ -79,26 +81,34 @@ public class Post implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "active")
-    private boolean active;
+    private boolean active = true;
     @Basic(optional = false)
-    @NotNull
+    @NotNull(message = "{post.price.null}")
     @Column(name = "price")
     private long price;
     @JoinTable(name = "post_tag", joinColumns = {
         @JoinColumn(name = "post_id", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "tag_id", referencedColumnName = "id")})
     @ManyToMany
+    @JsonIgnore
     private Set<Tag> tagSet;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User userId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "postId")
+    @JsonIgnore
     private Set<Like1> like1Set;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "postId")
+    @JsonIgnore
     private Set<Comment> commentSet;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "postId")
+    @JsonIgnore
     private Set<AuctionPartis> auctionPartisSet;
-    
+    @Transient
+    @JsonIgnore
+    @Nullable
+    private MultipartFile file;
+
 
     public Post() {
     }
@@ -107,11 +117,10 @@ public class Post implements Serializable {
         this.id = id;
     }
 
-    public Post(Integer id, String content, Date postedDate, Date updatedDate, boolean isAuction, boolean active, long price) {
+    public Post(Integer id, String content, Date postedDate, boolean isAuction, boolean active, long price) {
         this.id = id;
         this.content = content;
         this.postedDate = postedDate;
-        this.updatedDate = updatedDate;
         this.isAuction = isAuction;
         this.active = active;
         this.price = price;
@@ -149,18 +158,24 @@ public class Post implements Serializable {
         this.postedDate = postedDate;
     }
 
-    public Date getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(Date updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
     public boolean getIsAuction() {
         return isAuction;
     }
 
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+    
     public void setIsAuction(boolean isAuction) {
         this.isAuction = isAuction;
     }

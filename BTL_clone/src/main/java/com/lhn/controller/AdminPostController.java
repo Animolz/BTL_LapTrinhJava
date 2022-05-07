@@ -5,6 +5,7 @@
 package com.lhn.controller;
 
 import com.lhn.service.PostService;
+import com.lhn.service.StatsService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,8 +24,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminPostController {
     @Autowired
     private PostService postService;
+    @Autowired
+    private StatsService statsService;
     
-    @GetMapping(path = {"/admin-post"})
+    @GetMapping(path = {"/admin/admin-post"})
     public String adminPost(Model model,
             @RequestParam(value = "kw", required = false) String kw){
         if(kw != null && !kw.isEmpty()){
@@ -38,14 +41,15 @@ public class AdminPostController {
         return "admin-post";
     }
     
-    @GetMapping(path = {"/admin-post/disable/{postId}"})
+    @GetMapping(path = {"/admin/admin-post/disable/{postId}"})
     public String disablePost(Model model,
             @PathVariable(value = "postId") int postId){
         if(this.postService.disablePost(postId))
-            return "redirect:/admin-post";
+            return "redirect:/admin/admin-post";
         else{
             model.addAttribute("error", "There's an error when we tried to disable your post!!!");
-            return "forward:/admin-post";
+            return "admin-post";
         }
     }
+
 }

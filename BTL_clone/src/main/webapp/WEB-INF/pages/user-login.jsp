@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,6 +30,16 @@
         <section id="user-login" style="background-image: url('<c:url value="/pics/login_background.png" />')">
             <div class="container wrap-login-signup">
                 <form action="${action}" method="POST" >
+                    <c:if test="${param.error != null}">
+                        <div class="alert alert-danger">
+                            <spring:message code="user.login.error1" />
+                        </div>
+                    </c:if>
+                    <c:if test="${param.accessDenied != null}">
+                        <div class="alert alert-danger">
+                            <spring:message code="user.login.error2" />
+                        </div>
+                    </c:if>
                     <span class="login-signup-display">Login</span>
                     <div class="mt-5 mb-2">
                         <span class="txt1">Username</span>
@@ -47,7 +58,7 @@
                     </div>
                 </form>
                 <div class="txt1 w-100 login-signup-display mt-5 text-capitalize">
-                    <p>Don't have an account? <a href="<c:url value="/user-register"/>">Sign up</a></p>
+                    <p>Don't have an account? <a href="<c:url value="/user-register"/>" class="btn btn-success text-light">Sign up</a></p>
                 </div>
             </div>
         </section>

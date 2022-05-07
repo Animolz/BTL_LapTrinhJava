@@ -4,9 +4,12 @@
  */
 package com.lhn.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.lhn.annotation.UserExist;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
+import javax.annotation.Nullable;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -50,9 +53,11 @@ import org.springframework.web.multipart.MultipartFile;
     @NamedQuery(name = "User.findByCreatedTime", query = "SELECT u FROM User u WHERE u.createdTime = :createdTime"),
     @NamedQuery(name = "User.findByIsReported", query = "SELECT u FROM User u WHERE u.isReported = :isReported"),
     @NamedQuery(name = "User.findByIsBanned", query = "SELECT u FROM User u WHERE u.isBanned = :isBanned"),
-    @NamedQuery(name = "User.findByRole", query = "SELECT u FROM User u WHERE u.role = :role"),
+    @NamedQuery(name = "User.findByUserRole", query = "SELECT u FROM User u WHERE u.userRole = :userRole"),
     @NamedQuery(name = "User.findByActive", query = "SELECT u FROM User u WHERE u.active = :active")})
 public class User implements Serializable {
+    public static final String ADMIN = "ROLE_ADMIN";
+    public static final String USER = "ROLE_USER";
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -61,42 +66,56 @@ public class User implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @NotNull(message = "{user.fullname.null}")
-    @Max(value = 45, message = "{user.fullname.max}")
-    @Min(value = 1, message = "{user.fullname.min}")
+    @NotNull(message="{user.fullname.null}")
+    @Size.List({
+        @Size(max=45,message="{user.fullname.max}"),
+        @Size(min=1,message="{user.fullname.min}")
+    })
     @Column(name = "fullname")
     private String fullname;
     @Basic(optional = false)
     @NotNull(message = "{user.username.null}")
-    @Max(value = 45, message = "{user.username.max}")
-    @Min(value = 1, message = "{user.username.min}")
+    @Size.List({
+        @Size(max=20,message="{user.username.max}"),
+        @Size(min=1,message="{user.username.min}")
+    })
     @Column(name = "username")
     private String username;
     @Basic(optional = false)
     @NotNull(message = "{user.password.null}")
-    @Max(value = 255, message = "{user.password.max}")
-    @Min(value = 1, message = "{user.password.min}")
+    @Size.List({
+        @Size(max=255,message="{user.password.max}"),
+        @Size(min=1,message="{user.password.min}")
+    })
     @Column(name = "password")
     private String password;
     @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="{user.email.format}")//if the field contains email address consider using this annotation to enforce field validation
-    @Size(max = 150, message = "user.email.size")
+    @Size(max=150,message = "{user.email.size}")
     @Column(name = "email")
     private String email;
-    @Pattern(regexp="/\\(?([0-9]{3})\\)?([ .-]?)([0-9]{3})\\2([0-9]{4})/", message="{user.phone.format}")//if the field contains phone or fax number consider using this annotation to enforce field validation
+    @Pattern(regexp="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$", message="{user.phone.format}")
     @Basic(optional = false)
     @NotNull
-    @Max(value = 12, message = "{user.phone.max}")
-    @Min(value = 1, message = "{user.phone.min}")
+    @Size.List({
+        @Size(max=12,message="{user.phone.max}"),
+        @Size(min=1,message="{user.phone.min}")
+    })
     @Column(name = "phone")
     private String phone;
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+    @Size(max=150)
+    @Nullable
     @Column(name = "avatar")
     private String avatar = "https://res.cloudinary.com/dyhp6kio1/image/upload/v1651247273/images_sliwp9.png";
-    @Size(max = 255, message = "{user.about.max}")
+    @Size(max=255,message="{user.about.max}")
     @Column(name = "about")
     private String about;
+    @Basic(optional = false)
+    @Column(name = "facebook")
+    private String facebook;
+    @Basic(optional = false)
+    @Column(name = "instagram")
+    private String instagram;
     @Basic(optional = false)
     @NotNull
     @Column(name = "created_time")
@@ -112,27 +131,32 @@ public class User implements Serializable {
     private boolean isBanned;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "role")
-    private String role;
+    @Size(min = 1, max = 11)
+    @Column(name = "user_role")
+    private String userRole = USER;
     @Basic(optional = false)
     @NotNull
     @Column(name = "active")
     private boolean active = true;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @JsonIgnore
     private Set<Post> postSet;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @JsonIgnore
     private Set<Like1> like1Set;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @JsonIgnore
     private Set<Comment> commentSet;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @JsonIgnore
     private Set<AuctionPartis> auctionPartisSet;
     @Transient
+    @Nullable
     private String confirmPassword;
     @Transient
+    @Nullable
+    @JsonIgnore
     private MultipartFile file;
-    @Transient
-    private String confirmPass;
 
     public User() {
     }
@@ -151,7 +175,7 @@ public class User implements Serializable {
         this.createdTime = createdTime;
         this.isReported = isReported;
         this.isBanned = isBanned;
-        this.role = role;
+        this.userRole = role;
         this.active = active;
     }
 
@@ -189,6 +213,61 @@ public class User implements Serializable {
 
     public String getEmail() {
         return email;
+    }
+
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
+    /**
+     * @return the userRole
+     */
+    public String getUserRole() {
+        return userRole;
+    }
+
+    /**
+     * @param userRole the userRole to set
+     */
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
+    /**
+     * @return the facebook
+     */
+    public String getFacebook() {
+        return facebook;
+    }
+
+    /**
+     * @param facebook the facebook to set
+     */
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    /**
+     * @return the instagram
+     */
+    public String getInstagram() {
+        return instagram;
+    }
+
+    /**
+     * @param instagram the instagram to set
+     */
+    public void setInstagram(String instagram) {
+        this.instagram = instagram;
     }
 
     /**
@@ -257,14 +336,6 @@ public class User implements Serializable {
         this.isBanned = isBanned;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public boolean getActive() {
         return active;
     }
@@ -308,22 +379,6 @@ public class User implements Serializable {
     public void setAuctionPartisSet(Set<AuctionPartis> auctionPartisSet) {
         this.auctionPartisSet = auctionPartisSet;
     }
-    
-    
-    /**
-     * @return the file
-     */
-    public MultipartFile getFile() {
-        return file;
-    }
-
-    /**
-     * @param file the file to set
-     */
-    public void setFile(MultipartFile file) {
-        this.file = file;
-    }
-
 
     @Override
     public int hashCode() {

@@ -88,7 +88,7 @@ public class TagRepositoryImpl implements TagRepository{
 
     @Override
     public Tag findById(int id) {
-    Session session = this.sessionFactory.getObject().getCurrentSession();
+        Session session = this.sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder b = session.getCriteriaBuilder();
         CriteriaQuery q = b.createQuery(Tag.class);
         Root root = q.from(Tag.class);
@@ -101,5 +101,5 @@ public class TagRepositoryImpl implements TagRepository{
         
         return (Tag)query.getResultList().get(0);
     }    
-    
+
 }

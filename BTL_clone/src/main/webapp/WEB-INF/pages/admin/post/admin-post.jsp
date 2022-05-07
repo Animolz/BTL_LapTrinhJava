@@ -56,7 +56,7 @@
         <td>${p[7]}</td>
         <td>${p[8]}</td>
         <td class="p-1" style="height: 0px">
-            <a href="<c:url value="/admin-post/disable/${p[0]}" />" id="disablePost" style="text-decoration: none">
+            <a href="<c:url value="/admin/admin-post/disable/${p[0]}" />" id="disablePost" style="text-decoration: none">
                 <button class="btn btn-danger d-flex justify-content-center p-0 align-items-center w-100 h-100">
                     <i class="fa-solid fa-eye-slash"></i>
                     <input class="txt1 text-light h6 bg-transparent border-0 m-0 p-0 w-auto" type="button" value="Disable">

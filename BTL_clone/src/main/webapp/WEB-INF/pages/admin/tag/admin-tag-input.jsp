@@ -9,7 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${error != null}"><div class="txt1 h5 alert alert-danger text-center my-2 w-100 p-2">${error}</div></c:if>
-<c:url var="action" value="/admin-tag/input/add"/>
+<c:url var="action" value="/admin/admin-tag/input/add"/>
 
 <div class="container">
     <form:form method="POST" action="${action}" modelAttribute="tag" >

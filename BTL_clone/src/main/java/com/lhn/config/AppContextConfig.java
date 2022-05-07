@@ -6,6 +6,7 @@ package com.lhn.config;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.lhn.formatter.UserFormatter;
 import com.lhn.validator.PassValidator;
 import com.lhn.validator.UserValidator;
 import com.lhn.validator.WebAppValidator;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -66,14 +68,6 @@ public class AppContextConfig implements WebMvcConfigurer{
     }
     
     @Bean
-    public CommonsMultipartResolver multipartResolver(){
-        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-        resolver.setDefaultEncoding("UTF-8");
-        
-        return resolver;
-    }
-    
-    @Bean
     public Cloudinary cloudinary(){
         Cloudinary c = new Cloudinary(ObjectUtils.asMap(
                                         "cloud_name", "dyhp6kio1",
@@ -85,23 +79,19 @@ public class AppContextConfig implements WebMvcConfigurer{
     }
     
     @Bean
+    public CommonsMultipartResolver multipartResolver(){
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+        resolver.setDefaultEncoding("UTF-8");
+        
+        return resolver;
+    }
+    
+    @Bean
     public MessageSource messageSource() {
         ResourceBundleMessageSource resource 
         = new ResourceBundleMessageSource();
         resource.setBasename("message");
         return resource;
-    }
-    
-    @Bean
-    public WebAppValidator userValidator(){
-        Set<Validator> springValidators = new HashSet<>();
-        springValidators.add(new UserValidator());
-        springValidators.add(new PassValidator());
-        
-        WebAppValidator w = new WebAppValidator();
-        w.setSpringValidators(springValidators);
-        
-        return w;
     }
 
     @Bean
@@ -115,5 +105,23 @@ public class AppContextConfig implements WebMvcConfigurer{
     @Override
     public Validator getValidator() {
        return validator();
+    }
+    
+        
+    @Bean
+    public WebAppValidator userValidator(){
+        Set<Validator> springValidators = new HashSet<>();
+        springValidators.add(new UserValidator());
+        springValidators.add(new PassValidator());
+        
+        WebAppValidator w = new WebAppValidator();
+        w.setSpringValidators(springValidators);
+        
+        return w;
+    }
+    
+    @Override
+    public void addFormatters(FormatterRegistry registry){
+        registry.addFormatter(new UserFormatter());
     }
 }

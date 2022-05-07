@@ -45,7 +45,7 @@ public class Like1 implements Serializable {
     @NotNull
     @Column(name = "created_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
+    private Date createdDate = new Date();
     @JoinColumn(name = "post_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Post postId;
@@ -63,6 +63,13 @@ public class Like1 implements Serializable {
     public Like1(Integer id, Date createdDate) {
         this.id = id;
         this.createdDate = createdDate;
+    }
+    
+    public Like1(Integer id, Post postId, User userId, Date date){
+        this.id = id;
+        this.postId = postId;
+        this.userId = userId;
+        this.createdDate = date;
     }
 
     public Integer getId() {

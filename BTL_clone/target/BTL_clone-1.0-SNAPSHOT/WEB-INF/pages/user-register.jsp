@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,57 +28,58 @@
         <c:url value="/user-register/add" var="action" />
         <section id="user-login" style="background-image: url('<c:url value="/pics/signup_background.png" />')">
             <div class="container wrap-login-signup pl-5 pr-5">
-                <c:if test="${error != null}"><div class="txt1 h5 alert alert-danger text-center my-2 w-100 p-2">${error}</div></c:if>
-                <form:form  method="POST" cssClass="overflow-auto" style="height: 800px" action="${action}" modelAttribute="user"
+                <form:form method="POST" class="overflow-auto" style="height: 800px" action="${action}" modelAttribute="user"
                             enctype="multipart/form-data">
-                    <form:errors path="*" element="div" cssClass="alert alert-danger" />
+                    <c:if test="${error != null}"><div class="txt1 h5 alert alert-danger text-center my-2 w-100 p-2">${error}</div></c:if>
+                    <form:errors path="*" cssClass="alert alert-danger"></form:errors>
                     <span class="login-signup-display">Sign up</span>
                     <div class="mt-4 mb-2">
                         <span class="txt1">Email</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Email is required">
-                        <form:input cssClass="login-signup-form" type="email" path="email" required="Email is required" />
-                        <form:errors cssClass="login-signup-form text-danger" path="email" />
+                        <form:input cssClass="login-signup-form" type="email" path="email" required="required" />
+                        <form:errors cssClass="alert alert-danger" path="email" ></form:errors>
                     </div>
                     <div class="mt-4 mb-2">
                         <span class="txt1">Username</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Username is required">
-                        <form:input cssClass="login-signup-form" type="text" path="username" required="Username is required" />
-                        <form:errors cssClass="login-signup-form text-danger" path="username" />
+                        <form:input cssClass="login-signup-form"  type="text" path="username" required="required" />
+                        <form:errors cssClass="alert alert-danger" path="username" ></form:errors>
                     </div>
                     <div class="mt-4 mb-2">
                         <span class="txt1">Password</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <form:input cssClass="login-signup-form" type="password" path="password" required="Password is required" />
-                        <form:errors cssClass="login-signup-form text-danger" path="password" />
+                        <form:input cssClass="login-signup-form" type="password" path="password" required="required" />
+                        <form:errors cssClass="alert alert-danger" path="password" ></form:errors>
                     </div>
                     <div class="mt-4 mb-2">
                         <span class="txt1">Confirm Password</span>
                     </div>
-                    <div class="wrap-input100 validate-input">
-                        <form:input cssClass="login-signup-form" type="password" path="confirmPassword" required="Confirm password is required" />
+                    <div class="wrap-input100 validate-input" data-validate="Confirm password is required">
+                        <form:input cssClass="login-signup-form" type="password" path="confirmPassword" required="required" />
+                        <form:errors cssClass="alert alert-danger" path="confirmPassword" ></form:errors>
                     </div>
                     <div class="mt-3 mb-1">
                         <span class="txt1">Full name</span>
                     </div>
-                    <div class="wrap-input100 validate-input" data-validate="Fullname is required">
-                        <form:input cssClass="post-font" type="text" path="fullname" required="Fullname is required"/>
-                        <form:errors cssClass="login-signup-form text-danger" path="fullname" />
+                    <div class="wrap-input100 validate-input" data-validate="Full name is required">      
+                        <form:input cssClass="login-signup-form" type="text" path="fullname" required="required" />
+                        <form:errors cssClass="alert alert-danger" path="fullname" ></form:errors>
                     </div>
                     <div class="mt-3 mb-1">
                         <span class="txt1">Phone</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Phone is required">
-                        <form:input cssClass="post-font" type="text" path="phone" required="Phone is required"/>
-                        <form:errors cssClass="login-signup-form text-danger" path="phone" />
+                        <form:input cssClass="login-signup-form" type="text" path="phone" required="required" />
+                        <form:errors cssClass="alert alert-danger" path="phone" ></form:errors>
                     </div>
                     <div class="mt-3 mb-1">
                         <span class="txt1">Avatar</span>
                     </div>
                     <div class="wrap-input100 validate-input" data-validate="Avatar is required">
-                        <form:input cssClass="post-font" type="file" path="file" required="Avatar is required"/>
+                        <form:input cssClass="login-signup-form" type="file" path="file" required="required" id="img-output2"/>
                     </div>
                     <div class="wrap-input100 validate-input mt-2 crop">
                         <img id="output2" width="100%" height="auto" class="rounded-circle"/>
@@ -86,8 +88,8 @@
                         <span class="txt1">About(Optional)</span>
                     </div>
                     <div class="wrap-input100 validate-input mt-2">
-                        <form:textarea cssClass="post-font h-100" path="about" placeholder="Tell us something about yourself" rows="3"></form:textarea>
-                        <form:errors cssClass="login-signup-form text-danger" path="about" />
+                        <form:textarea class="login-signup-form h-100" path="about" placeholder="Tell us something about yourself" rows="3"></form:textarea>
+                        <form:errors cssClass="alert alert-danger" path="about" ></form:errors>
                     </div>
                     <div id="submit-container" class="mt-5">
                         <button type="submit" class="w-100" id="submitBtn">

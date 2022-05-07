@@ -5,6 +5,7 @@
 package com.lhn.service.impl;
 
 import com.lhn.pojo.Post;
+import com.lhn.pojo.User;
 import com.lhn.repository.PostRepository;
 import com.lhn.service.PostService;
 import java.util.List;
@@ -25,10 +26,39 @@ public class PostServiceImpl implements PostService{
     public List<Object[]> getPosts(Map<String, String> param) {
         return this.postRepository.getPosts(param);
     }
+    
+    @Override
+    public List<Object[]> getPosts(Map<String, String> map, boolean active, int page) {
+        return this.postRepository.getPosts(map, active, page);
+    }
+    
+    @Override
+    public Post getPostById(int id, boolean active){
+        return this.postRepository.getPostById(id, active);
+    }
 
     @Override
     public boolean disablePost(int postId) {
         return this.postRepository.disablePost(postId);
     }
-    
+
+    @Override
+    public boolean addPost(Post post) {
+       return this.postRepository.addPost(post);
+    }
+
+    @Override
+    public List<Object[]> getPostsByUserId(User user, boolean active) {
+        return this.postRepository.getPostsByUserId(user, active);
+    }
+
+    @Override
+    public long countPosts() {
+        return this.postRepository.countPosts();
+    }
+
+    @Override
+    public boolean updatePost(Post post, int postId) {
+        return this.postRepository.updatePost(post, postId);
+    }
 }

@@ -10,6 +10,7 @@
     <class>com.lhn.pojo.Like1</class>
     <class>com.lhn.pojo.AuctionPartis</class>
     <class>com.lhn.pojo.Post</class>
+    <class>com.lhn.pojo.PostTag</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/charitydb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

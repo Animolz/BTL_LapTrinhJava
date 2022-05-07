@@ -24,7 +24,7 @@ public class AdminTagController {
     @Autowired
     private TagService tagService;
         
-    @GetMapping(path = {"/admin-tag"})
+    @GetMapping(path = {"/admin/admin-tag"})
     public String adminTag(Model model,
                 @RequestParam(value = "kw", required = false) String kw){
         if(kw != null && !kw.isEmpty()){
@@ -36,37 +36,37 @@ public class AdminTagController {
         return "admin-tag";
     }
     
-    @GetMapping(path = {"/admin-tag/input"})
+    @GetMapping(path = {"/admin/admin-tag/input"})
     public String adminTagInput(Model model){
         
         model.addAttribute("tag", new Tag());
         return "admin-tag-input";
     }
     
-    @PostMapping(path = {"/admin-tag/input/add"})
+    @PostMapping(path = {"/admin/admin-tag/input/add"})
     public String addTag(Model model,
                 @ModelAttribute(value = "tag") Tag tag){
     
         if(this.tagService.addTag(tag))
-            return "redirect:/admin-tag";
+            return "redirect:/admin/admin-tag";
         else{
             model.addAttribute("error", "There's an error when we tried to record your tag!!!");
-            return "forward:/admin-tag";
+            return "admin-tag-input";
         }
     }
     
-    @GetMapping(path = {"/admin-tag/{tagId}"})
+    @GetMapping(path = {"/admin/admin-tag/{tagId}"})
     public String deleteTag(Model model,
                 @PathVariable(value = "tagId") int id){
         if(this.tagService.deleteTag(id))
-            return "redirect:/admin-tag";
+            return "redirect:/admin/admin-tag";
         else{
             model.addAttribute("error", "There's an error when we tried to delete your tag!!!");
-            return "forward:/admin-tag";
+            return "admin-tag";
         }
     }
     
-    @GetMapping(path = {"/admin-tag/input/{tagId}"})
+    @GetMapping(path = {"/admin/admin-tag/input/{tagId}"})
     public String InputUpdateTag(Model model,
                 @PathVariable(value = "tagId") int id){
         Tag tag = this.tagService.findById(id);
@@ -75,15 +75,15 @@ public class AdminTagController {
         return "admin-tag-input1";
     }
     
-    @PostMapping(path = {"/admin-tag/input/{tagId}/update"})
+    @PostMapping(path = {"/admin/admin-tag/input/{tagId}/update"})
     public String updateTag(Model model,
                 @ModelAttribute(value = "tag") Tag tag,
                 @PathVariable(value = "tagId") int tagId){
         if(this.tagService.updateTag(tag, tagId))
-            return "redirect:/admin-tag";
+            return "redirect:/admin/admin-tag";
         else{
             model.addAttribute("error", "There's an error when we tried to update your tag!!!");
-            return "forward:/admin-tag";
+            return "admin-tag-input1";
         }
     }
 }

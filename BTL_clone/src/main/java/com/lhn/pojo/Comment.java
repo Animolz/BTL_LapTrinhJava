@@ -4,6 +4,7 @@
  */
 package com.lhn.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -53,11 +54,11 @@ public class Comment implements Serializable {
     @NotNull
     @Column(name = "created_date")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
+    private Date createdDate = new Date();
     @Basic(optional = false)
     @NotNull
     @Column(name = "active")
-    private boolean active;
+    private boolean active = true;
     @JoinColumn(name = "post_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Post postId;

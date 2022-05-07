@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface TagRepository {
     List<Tag> getTags(String tag);
+    List<Tag> getTagsByPostId(int postId);
     boolean addTag(Tag tag);
     boolean updateTag(Tag tag, int id);
     boolean deleteTag(int id); 
